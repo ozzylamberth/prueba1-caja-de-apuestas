@@ -1,6 +1,6 @@
 package unit;
 
-public class RegCarrCabUnit {
+public class RegCaballoUnit {
 
 	/**
 	 * @param args
@@ -11,13 +11,13 @@ public class RegCarrCabUnit {
 		System.out.println("INICIO ");
 
 		System.out.println("Resultado Reg por id "
-				+ new ws.RegCarrCabSOA().getById(1));
+				+ new ws.RegCaballoSOA().getById(1));
 		System.out.println("Resultado Reg todas "
-				+ new ws.RegCarrCabSOA().getAll());
+				+ new ws.RegCaballoSOA().getAll());
 		System.out.println("Resultado Reg caballo "
-				+ new ws.RegCarrCabSOA().getByCaballo(2));
+				+ new ws.RegCaballoSOA().getByCaballo(2));
 		System.out.println("Resultado Reg Carrera "
-				+ new ws.RegCarrCabSOA().getByCarrera(5));
+				+ new ws.RegCaballoSOA().getByCarrera(5));
 		
 		System.out.println("FIN ");
 	}
