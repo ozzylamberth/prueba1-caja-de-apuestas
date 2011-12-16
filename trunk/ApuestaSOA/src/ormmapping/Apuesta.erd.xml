@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Model quotesql="1" tablecharset="">
+  <Entity name="tap_caballo">
+    <Column name="cab_id">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>increment</IDGenerator>
+      <Unique>true</Unique>
+      <Index>true</Index>
+      <Comment>Clave primaria, identificador de cada registro de los caballos.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="cab_nombre">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Campo que almacena el nombre de un registro de un caballo.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="tap_jinetejin_id">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>tap_jinete.jin_id</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Clave foranea que almacena el jinete del caballo.</Comment>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="tap_jinete">
+    <Column name="jin_id">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>increment</IDGenerator>
+      <Unique>true</Unique>
+      <Index>true</Index>
+      <Comment>Clave primaria, identificador de cada registro de un jinete.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="jin_rut">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>true</Unique>
+      <Index>true</Index>
+      <Comment>Campo que almacena el rut de un registro de un jinete.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="jin_nombre">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Campo que almacena el nombre de un registro de un jinete.</Comment>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="tap_apuesta">
+    <Column name="ap_id">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>increment</IDGenerator>
+      <Unique>true</Unique>
+      <Index>true</Index>
+      <Comment>Clave primaria, identificador de cada registro de una apuesta.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="ap_monto">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Campo que almacena el monto de un registro de una anotacion.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="tap_cajacaj_id">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>tap_caja.caj_id</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Clave foranea que almacena el id de la caja de la apuesta.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="tap_carreracar_id">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>tap_carrera.car_id</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Clave foranea que almacena el la carrera de la apuesta.</Comment>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="tap_carrera">
+    <Column name="car_id">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>increment</IDGenerator>
+      <Unique>true</Unique>
+      <Index>true</Index>
+      <Comment>Clave primaria, identificador de cada registro de una carrera.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="car_numero">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>true</Index>
+      <Comment>Campo que almacena el numero de un registro de una carrera.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="car_fecha">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>17</Type>
+      <Length>0</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Campo que almacena la fecha de un registro de una carrera.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="tap_pistapis_id">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>tap_pista.pis_id</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Clave foranea que almacena el id de la pista de la carrera.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="tap_caballocab_id">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>tap_caballo.cab_id</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Clave foranea que almacena el id del caballo de la carrera.</Comment>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="tap_pista">
+    <Column name="pis_id">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>increment</IDGenerator>
+      <Unique>true</Unique>
+      <Index>true</Index>
+      <Comment>Clave primaria, identificador de cada registro de una pista.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="pis_nombre">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Campo que almacena el nombre de un registro de una pista.</Comment>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="tap_caja">
+    <Column name="caj_id">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>increment</IDGenerator>
+      <Unique>true</Unique>
+      <Index>true</Index>
+      <Comment>Clave primaria, identificador de cada registro de una caja.</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="caj_nombre">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Campo que almacena el nombre de un registro de una caja.</Comment>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <ForeignKey name="FKtap_caball840142">
+    <ReferenceTable>tap_caballo</ReferenceTable>
+    <ReferencedTable>tap_jinete</ReferencedTable>
+    <Columns>
+      <Column>tap_jinetejin_id</Column>
+    </Columns>
+    <RefColumns>
+      <Column>jin_id</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKtap_apuest750498">
+    <ReferenceTable>tap_apuesta</ReferenceTable>
+    <ReferencedTable>tap_caja</ReferencedTable>
+    <Columns>
+      <Column>tap_cajacaj_id</Column>
+    </Columns>
+    <RefColumns>
+      <Column>caj_id</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKtap_carrer826173">
+    <ReferenceTable>tap_carrera</ReferenceTable>
+    <ReferencedTable>tap_pista</ReferencedTable>
+    <Columns>
+      <Column>tap_pistapis_id</Column>
+    </Columns>
+    <RefColumns>
+      <Column>pis_id</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKtap_carrer842403">
+    <ReferenceTable>tap_carrera</ReferenceTable>
+    <ReferencedTable>tap_caballo</ReferencedTable>
+    <Columns>
+      <Column>tap_caballocab_id</Column>
+    </Columns>
+    <RefColumns>
+      <Column>cab_id</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKtap_apuest61034">
+    <ReferenceTable>tap_apuesta</ReferenceTable>
+    <ReferencedTable>tap_carrera</ReferencedTable>
+    <Columns>
+      <Column>tap_carreracar_id</Column>
+    </Columns>
+    <RefColumns>
+      <Column>car_id</Column>
+    </RefColumns>
+  </ForeignKey>
+</Model>

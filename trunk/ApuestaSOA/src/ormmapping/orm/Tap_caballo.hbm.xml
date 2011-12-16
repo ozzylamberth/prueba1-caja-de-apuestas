@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Tap_caballo" table="tap_caballo" lazy="false">
+		<id name="cab_id" column="cab_id" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="cab_nombre" column="cab_nombre" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Campo que almacena el nombre de un registro de un caballo.
+			</meta>
+		</property>
+		<many-to-one name="tap_jinetejin" column="tap_jinetejin_id" class="orm.Tap_jinete" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<set name="ORM_Tap_carrera" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="tap_caballocab_id" not-null="true"/>
+			<one-to-many class="orm.Tap_carrera"/>
+		</set>
+	</class>
+</hibernate-mapping>
