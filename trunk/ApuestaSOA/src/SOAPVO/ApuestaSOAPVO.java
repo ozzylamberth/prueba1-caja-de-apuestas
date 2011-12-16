@@ -16,10 +16,10 @@ public class ApuestaSOAPVO {
 	
 	public static ApuestaSOAPVO crearApuestaSOAPVO(orm.Tap_apuesta apuestaOrm) {
 		ApuestaSOAPVO objeto = new ApuestaSOAPVO();
-		objeto.setId(apuestaOrm.getAp_id());
-		objeto.setMonto(apuestaOrm.getAp_monto());
-		objeto.setNombreCaballo(apuestaOrm.getTap_carreracar().getTap_caballocab().getCab_nombre());
-		objeto.setNumeroCarrera(apuestaOrm.getTap_carreracar().getCar_numero());
+		objeto.setId(apuestaOrm.getApu_id());
+		objeto.setMonto(apuestaOrm.getApu_monto());
+		objeto.setNombreCaballo(apuestaOrm.getTap_regcarrcabrcc().getTap_caballocab().getCab_nombre());
+		objeto.setNumeroCarrera(apuestaOrm.getTap_regcarrcabrcc().getTap_carreracar().getCar_numero());
 		objeto.setNombreCaja(apuestaOrm.getTap_cajacaj().getCaj_nombre());
 		return objeto;
 	}

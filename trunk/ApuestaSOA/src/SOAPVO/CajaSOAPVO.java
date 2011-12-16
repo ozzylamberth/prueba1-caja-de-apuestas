@@ -11,7 +11,7 @@ public class CajaSOAPVO {
 	 * @return caja
 	 */
 	
-	public static CajaSOAPVO crearCajaSOAPVO(orm.Tap_j cajaOrm) {
+	public static CajaSOAPVO crearCajaSOAPVO(orm.Tap_caja cajaOrm) {
 		CajaSOAPVO objeto = new CajaSOAPVO();
 		objeto.setId(cajaOrm.getCaj_id());
 		objeto.setNombre(cajaOrm.getCaj_nombre());
