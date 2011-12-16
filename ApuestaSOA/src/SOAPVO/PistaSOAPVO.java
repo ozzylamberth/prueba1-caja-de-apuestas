@@ -7,7 +7,7 @@ public class PistaSOAPVO {
 	String nombre;
 	
 	/**
-	 * Crea un nuevo jinete
+	 * Crea una nueva pista
 	 * @param pistaOrm
 	 * @return
 	 */
