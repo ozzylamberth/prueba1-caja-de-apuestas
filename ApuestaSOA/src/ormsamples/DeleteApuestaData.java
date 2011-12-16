@@ -30,10 +30,10 @@ public class DeleteApuestaData {
 			orm.Tap_carrera oRMTap_carrera = oRMTap_carreraDAO.loadTap_carreraByQuery(null, null);
 			// Delete the persistent object
 			oRMTap_carreraDAO.delete(oRMTap_carrera);
-			orm.dao.Tap_regcarrcabDAO oRMTap_regcarrcabDAO = lDAOFactory.getTap_regcarrcabDAO();
-			orm.Tap_regcarrcab oRMTap_regcarrcab = oRMTap_regcarrcabDAO.loadTap_regcarrcabByQuery(null, null);
+			orm.dao.Tap_regcaballoDAO oRMTap_regcaballoDAO = lDAOFactory.getTap_regcaballoDAO();
+			orm.Tap_regcaballo oRMTap_regcaballo = oRMTap_regcaballoDAO.loadTap_regcaballoByQuery(null, null);
 			// Delete the persistent object
-			oRMTap_regcarrcabDAO.delete(oRMTap_regcarrcab);
+			oRMTap_regcaballoDAO.delete(oRMTap_regcaballo);
 			orm.dao.Tap_apuestaDAO oRMTap_apuestaDAO = lDAOFactory.getTap_apuestaDAO();
 			orm.Tap_apuesta oRMTap_apuesta = oRMTap_apuestaDAO.loadTap_apuestaByQuery(null, null);
 			// Delete the persistent object

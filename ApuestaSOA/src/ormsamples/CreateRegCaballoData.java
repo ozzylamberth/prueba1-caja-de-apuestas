@@ -9,16 +9,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.orm.*;
-public class CreateRegCarrCabData {
+public class CreateRegCaballoData {
 	public void createTestData() throws PersistentException {
 		PersistentTransaction t = orm.ApuestaPersistentManager.instance().getSession().beginTransaction();
 		try {
 
             orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
             
-            orm.dao.Tap_regcarrcabDAO oRMTap_reg_CarrCabDAO = lDAOFactory.getTap_regcarrcabDAO();
+            orm.dao.Tap_regcaballoDAO oRMTap_reg_CarrCabDAO = lDAOFactory.getTap_regcaballoDAO();
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab1 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab1 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO1 = lDAOFactory.getTap_caballoDAO();
@@ -32,7 +32,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab1.setORM_Tap_carreracar(oRMTap_carrera1);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab1);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab2 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab2 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO2 = lDAOFactory.getTap_caballoDAO();
@@ -46,7 +46,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab2.setORM_Tap_carreracar(oRMTap_carrera2);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab2);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab3 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab3 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO3 = lDAOFactory.getTap_caballoDAO();
@@ -61,7 +61,7 @@ public class CreateRegCarrCabData {
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab3);
                         
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab4 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab4 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO4 = lDAOFactory.getTap_caballoDAO();
@@ -75,7 +75,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab4.setORM_Tap_carreracar(oRMTap_carrera4);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab4);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab5 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab5 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO5 = lDAOFactory.getTap_caballoDAO();
@@ -89,7 +89,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab5.setORM_Tap_carreracar(oRMTap_carrera5);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab5);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab6 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab6 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO6 = lDAOFactory.getTap_caballoDAO();
@@ -103,7 +103,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab6.setORM_Tap_carreracar(oRMTap_carrera6);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab6);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab7 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab7 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO7 = lDAOFactory.getTap_caballoDAO();
@@ -118,7 +118,7 @@ public class CreateRegCarrCabData {
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab7);
             
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab8 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab8 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO8 = lDAOFactory.getTap_caballoDAO();
@@ -132,7 +132,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab8.setORM_Tap_carreracar(oRMTap_carrera8);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab8);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab9 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab9 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO9 = lDAOFactory.getTap_caballoDAO();
@@ -147,7 +147,7 @@ public class CreateRegCarrCabData {
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab9);
             
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab10 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab10 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO10 = lDAOFactory.getTap_caballoDAO();
@@ -161,7 +161,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab10.setORM_Tap_carreracar(oRMTap_carrera10);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab10);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab11 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab11 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO11 = lDAOFactory.getTap_caballoDAO();
@@ -175,7 +175,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab11.setORM_Tap_carreracar(oRMTap_carrera11);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab11);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab12 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab12 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO12 = lDAOFactory.getTap_caballoDAO();
@@ -190,7 +190,7 @@ public class CreateRegCarrCabData {
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab12);
             
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab13 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab13 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO13 = lDAOFactory.getTap_caballoDAO();
@@ -204,7 +204,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab13.setORM_Tap_carreracar(oRMTap_carrera13);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab13);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab14 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab14 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO14 = lDAOFactory.getTap_caballoDAO();
@@ -218,7 +218,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab14.setORM_Tap_carreracar(oRMTap_carrera14);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab14);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab15 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab15 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO15 = lDAOFactory.getTap_caballoDAO();
@@ -232,7 +232,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab15.setORM_Tap_carreracar(oRMTap_carrera15);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab15);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab16 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab16 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO16 = lDAOFactory.getTap_caballoDAO();
@@ -246,7 +246,7 @@ public class CreateRegCarrCabData {
             oRMTap_regCarrCab16.setORM_Tap_carreracar(oRMTap_carrera16);
             oRMTap_reg_CarrCabDAO.save(oRMTap_regCarrCab16);
             
-            orm.Tap_regcarrcab oRMTap_regCarrCab17 = oRMTap_reg_CarrCabDAO.createTap_regcarrcab();
+            orm.Tap_regcaballo oRMTap_regCarrCab17 = oRMTap_reg_CarrCabDAO.createTap_regcaballo();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             //Busca un caballo por id
 			orm.dao.Tap_caballoDAO oRMTap_caballoDAO17 = lDAOFactory.getTap_caballoDAO();
@@ -270,7 +270,7 @@ public class CreateRegCarrCabData {
 	
 	public static void main(String[] args) {
 		try {
-			CreateRegCarrCabData createRegCarrCabData = new CreateRegCarrCabData();
+			CreateRegCaballoData createRegCarrCabData = new CreateRegCaballoData();
 			try {
 				createRegCarrCabData.createTestData();
 			}

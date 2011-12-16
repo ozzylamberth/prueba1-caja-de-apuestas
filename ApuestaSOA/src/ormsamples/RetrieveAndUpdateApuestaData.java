@@ -30,10 +30,10 @@ public class RetrieveAndUpdateApuestaData {
 			orm.Tap_carrera oRMTap_carrera = oRMTap_carreraDAO.loadTap_carreraByQuery(null, null);
 			// Update the properties of the persistent object
 			oRMTap_carreraDAO.save(oRMTap_carrera);
-			orm.dao.Tap_regcarrcabDAO oRMTap_regcarrcabDAO = lDAOFactory.getTap_regcarrcabDAO();
-			orm.Tap_regcarrcab oRMTap_regcarrcab = oRMTap_regcarrcabDAO.loadTap_regcarrcabByQuery(null, null);
+			orm.dao.Tap_regcaballoDAO oRMTap_regcaballoDAO = lDAOFactory.getTap_regcaballoDAO();
+			orm.Tap_regcaballo oRMTap_regcaballo = oRMTap_regcaballoDAO.loadTap_regcaballoByQuery(null, null);
 			// Update the properties of the persistent object
-			oRMTap_regcarrcabDAO.save(oRMTap_regcarrcab);
+			oRMTap_regcaballoDAO.save(oRMTap_regcaballo);
 			orm.dao.Tap_apuestaDAO oRMTap_apuestaDAO = lDAOFactory.getTap_apuestaDAO();
 			orm.Tap_apuesta oRMTap_apuesta = oRMTap_apuestaDAO.loadTap_apuestaByQuery(null, null);
 			// Update the properties of the persistent object
@@ -77,11 +77,11 @@ public class RetrieveAndUpdateApuestaData {
 		//tap_carreraCriteria.car_id.eq();
 		System.out.println(tap_carreraCriteria.uniqueTap_carrera());
 		
-		System.out.println("Retrieving Tap_regcarrcab by Tap_regcarrcabCriteria");
-		orm.Tap_regcarrcabCriteria tap_regcarrcabCriteria = new orm.Tap_regcarrcabCriteria();
+		System.out.println("Retrieving Tap_regcaballo by Tap_regcaballoCriteria");
+		orm.Tap_regcaballoCriteria tap_regcaballoCriteria = new orm.Tap_regcaballoCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//tap_regcarrcabCriteria.rcc_id.eq();
-		System.out.println(tap_regcarrcabCriteria.uniqueTap_regcarrcab());
+		//tap_regcaballoCriteria.rc_id.eq();
+		System.out.println(tap_regcaballoCriteria.uniqueTap_regcaballo());
 		
 		System.out.println("Retrieving Tap_apuesta by Tap_apuestaCriteria");
 		orm.Tap_apuestaCriteria tap_apuestaCriteria = new orm.Tap_apuestaCriteria();

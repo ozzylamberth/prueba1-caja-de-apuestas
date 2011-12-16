@@ -50,11 +50,11 @@ public void listTestData() throws PersistentException {
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
-		System.out.println("Listing Tap_regcarrcab...");
-		orm.Tap_regcarrcab[] oRMTap_regcarrcabs = lDAOFactory.getTap_regcarrcabDAO().listTap_regcarrcabByQuery(null, null);
-		length = Math.min(oRMTap_regcarrcabs.length, ROW_COUNT);
+		System.out.println("Listing Tap_regcaballo...");
+		orm.Tap_regcaballo[] oRMTap_regcaballos = lDAOFactory.getTap_regcaballoDAO().listTap_regcaballoByQuery(null, null);
+		length = Math.min(oRMTap_regcaballos.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
-			System.out.println(oRMTap_regcarrcabs[i]);
+			System.out.println(oRMTap_regcaballos[i]);
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
@@ -129,17 +129,17 @@ public void listTestData() throws PersistentException {
 		}
 		System.out.println(length + " Tap_carrera record(s) retrieved."); 
 		
-		System.out.println("Listing Tap_regcarrcab by Criteria...");
-		orm.Tap_regcarrcabCriteria tap_regcarrcabCriteria = new orm.Tap_regcarrcabCriteria();
+		System.out.println("Listing Tap_regcaballo by Criteria...");
+		orm.Tap_regcaballoCriteria tap_regcaballoCriteria = new orm.Tap_regcaballoCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//tap_regcarrcabCriteria.rcc_id.eq();
-		tap_regcarrcabCriteria.setMaxResults(ROW_COUNT);
-		orm.Tap_regcarrcab[] oRMTap_regcarrcabs = tap_regcarrcabCriteria.listTap_regcarrcab();
-		length =oRMTap_regcarrcabs== null ? 0 : Math.min(oRMTap_regcarrcabs.length, ROW_COUNT); 
+		//tap_regcaballoCriteria.rc_id.eq();
+		tap_regcaballoCriteria.setMaxResults(ROW_COUNT);
+		orm.Tap_regcaballo[] oRMTap_regcaballos = tap_regcaballoCriteria.listTap_regcaballo();
+		length =oRMTap_regcaballos== null ? 0 : Math.min(oRMTap_regcaballos.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
-			 System.out.println(oRMTap_regcarrcabs[i]);
+			 System.out.println(oRMTap_regcaballos[i]);
 		}
-		System.out.println(length + " Tap_regcarrcab record(s) retrieved."); 
+		System.out.println(length + " Tap_regcaballo record(s) retrieved."); 
 		
 		System.out.println("Listing Tap_apuesta by Criteria...");
 		orm.Tap_apuestaCriteria tap_apuestaCriteria = new orm.Tap_apuestaCriteria();
