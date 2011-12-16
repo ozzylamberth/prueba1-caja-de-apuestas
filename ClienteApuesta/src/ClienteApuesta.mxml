@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:regcarrcabsoa="services.regcarrcabsoa.*"
+			   xmlns:apuestasoa="services.apuestasoa.*"
+			   minWidth="955" minHeight="600">
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.serialization.json.JSON;
+			import com.adobe.serialization.json.JSONDecoder;
+			
+			import flashx.textLayout.formats.Float;
+			
+			import mx.controls.Alert;
+			import mx.events.ListEvent;
+			
+			import spark.events.IndexChangeEvent;
+			import spark.events.TextOperationEvent;
+			
+			public var mon:int = 0;
+			public var caballo:ArrayCollection = new ArrayCollection;
+			public var caballoSeleccionado:ArrayCollection = new ArrayCollection;
+			public var id_carrera = 0;
+			protected function carrera_changeHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				if (carrera.selectedIndex == 0){
+					id_carrera = 1;	
+				}else if (carrera.selectedIndex == 1){
+					id_carrera = 2;
+				}else if (carrera.selectedIndex == 2){
+					id_carrera = 3;
+				}else if (carrera.selectedIndex == 3){
+					id_carrera = 4;
+				}else {
+					id_carrera = 5;
+				}
+				getByCarreraResult.token = regCarrCabSOA.getByCarrera(/*Enter value(s) for */ id_carrera);
+				var rawData:String = getByCarreraResult.lastResult;
+				var arrayDecode:Array = (JSON.decode(rawData) as Array);
+				this.caballo = new ArrayCollection(arrayDecode);
+				mostrarCaballos.dataProvider = caballo;
+			}
+			
+			
+			protected function apuesta_clickHandler(event:MouseEvent):void
+			{
+				//var index:int = mostrarCaballos.selectedIndex;
+				caballoSeleccionado.addItem(mostrarCaballos.selectedItem);
+				//getByCarreraResult.token = regCarrCabSOA.getByCarrera(/*Enter value(s) for */ idCarrera);
+				Alert.show(id_carrera + " - " + caballoSeleccionado.getItemAt(0).idCaballo + " - " + monto);
+				addResult.token = apuestaSOA.add(/*Enter value(s) for */ mon, caballoSeleccionado.getItemAt(0).idCaballo, id_carrera, 1);
+			}
+
+			
+			protected function button_clickHandler(event:MouseEvent):void
+			{
+				getAllResult.token = apuestaSOA.getAll();
+				var rawData:String = getAllResult.lastResult;
+				var arrayDecode:Array = (JSON.decode(rawData) as Array);
+				var mostrarAlByCurso:ArrayCollection = new ArrayCollection(arrayDecode);
+				mostrarApuestas.dataProvider = mostrarAlByCurso;
+			}
+			
+			protected function textinput1_changeHandler(event:TextOperationEvent):void
+			{
+				// TODO Auto-generated method stub
+				this.mon = parseInt(monto.text);
+			}
+			
+			protected function mostrarCaballos_changeHandler(event:ListEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+			protected function estima_clickHandler(event:MouseEvent):void
+			{
+				caballoSeleccionado.addItem(mostrarCaballos.selectedItem);
+				montoAPagarResult.token = apuestaSOA.montoAPagar(/*Enter value(s) for */ id_carrera, caballoSeleccionado.getItemAt(0).idCaballo, mon);
+				var rawData:String = montoAPagarResult.lastResult;
+				valor.text = rawData;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:CallResponder id="getByCarreraResult"/>
+		<regcarrcabsoa:RegCarrCabSOA id="regCarrCabSOA"
+									 fault="Alert.show(event.fault.faultString + '\n' + event.fault.faultDetail)"
+									 showBusyCursor="true"/>
+		<s:CallResponder id="getAllResult"/>
+		<apuestasoa:ApuestaSOA id="apuestaSOA"
+							   fault="Alert.show(event.fault.faultString + '\n' + event.fault.faultDetail)"
+							   showBusyCursor="true"/>
+		<s:CallResponder id="addResult"/>
+		<s:CallResponder id="montoAPagarResult"/>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:BorderContainer x="28" y="37" width="893" height="480" backgroundColor="#1E59EF">
+		<s:DropDownList id="carrera" x="173" y="80" click="carrera_changeHandler(event)">
+			<mx:ArrayCollection>
+				<fx:String >1</fx:String>
+				<fx:String >2</fx:String>
+				<fx:String >3</fx:String>
+				<fx:String >4</fx:String>
+				<fx:String >5</fx:String>
+			</mx:ArrayCollection></s:DropDownList>
+		<mx:DataGrid id="mostrarCaballos" x="44" y="132" width="315" height="192"
+					 change="mostrarCaballos_changeHandler(event)" editable="false">
+			<mx:columns>
+				<mx:DataGridColumn dataField="nombreCaballo" headerText="Caballos"/>
+			</mx:columns>
+		</mx:DataGrid>
+		<s:Label x="138" y="22" fontSize="22" fontWeight="bold" text="Sistema Apuestas"/>
+		<s:Label x="79" y="86" fontSize="16" fontWeight="bold" text="Carrera"/>
+		<s:Button id="estima" x="410" y="388" width="124" height="30" label="Estimar apuesta"
+				  click="estima_clickHandler(event)"/>
+		<s:Button id="apuesta" x="197" y="388" width="92" height="31" label="Apostar"
+				  click="apuesta_clickHandler(event)"/>
+		<s:TextInput id="monto" x="157" y="348" change="textinput1_changeHandler(event)"/>
+		<s:Label x="63" y="348" fontSize="16" fontWeight="bold" text="Monto"/>
+		<mx:DataGrid id="mostrarApuestas" x="405" y="132" width="449" height="192" editable="false">
+			<mx:columns>
+				<mx:DataGridColumn dataField="monto" headerText="Apuesta"/>
+				<mx:DataGridColumn dataField="numeroCarrera" headerText="Carrera"/>
+				<mx:DataGridColumn dataField="nombreCaballo" headerText="Caballo"/>
+			</mx:columns>
+		</mx:DataGrid>
+		<s:Button id="button" x="600" y="86" label="Actualizar" click="button_clickHandler(event)"/>
+		<mx:VRule x="373" y="102" width="11" height="238"/>
+		<s:Label id="valor" x="565" y="388" width="109" height="30" fontSize="20" fontWeight="bold"
+				 text="Valor"/>
+	</s:BorderContainer>
+</s:Application>
