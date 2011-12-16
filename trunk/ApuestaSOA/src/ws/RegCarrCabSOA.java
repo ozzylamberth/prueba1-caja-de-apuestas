@@ -7,7 +7,8 @@ import javax.print.DocFlavor.READER;
 
 import org.orm.PersistentException;
 
-import SOAPVO.RegCarrCabSOAPVO;
+import SOAPVO.CaballoSOAPVO;
+import SOAPVO.RegCaballoSOAPVO;
 
 import com.google.gson.Gson;
 
@@ -24,24 +25,24 @@ public class RegCarrCabSOA {
 
 		String json = null;
 		orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
-		Collection<RegCarrCabSOAPVO> coleccionRegCarrCabSOAPVO = new ArrayList<RegCarrCabSOAPVO>();
-		orm.Tap_regcarrcab[] ormRegCarrCab;
+		Collection<RegCaballoSOAPVO> coleccionRegCaballoSOAPVO = new ArrayList<RegCaballoSOAPVO>();
+		orm.Tap_regcaballo[] ormRegCaballo;
 		try {
 
-				ormRegCarrCab = lDAOFactory.getTap_regcarrcabDAO()
-						.listTap_regcarrcabByQuery(null, null);
+				ormRegCaballo = lDAOFactory.getTap_regcaballoDAO()
+						.listTap_regcaballoByQuery(null, null);
 				// busqueda de todos los registros existentes
 
-			if (ormRegCarrCab.length == 0) {// si no se encontraron registros
+			if (ormRegCaballo.length == 0) {// si no se encontraron registros
 				json = "1";
 			} else {// si se encontraron registros
-				for (int i = 0; i < ormRegCarrCab.length; i++) {
-					RegCarrCabSOAPVO regCarrCab = RegCarrCabSOAPVO
-							.crearRegCarrCabSOAPVO(ormRegCarrCab[i]);
-					coleccionRegCarrCabSOAPVO.add(regCarrCab);
+				for (int i = 0; i < ormRegCaballo.length; i++) {
+					RegCaballoSOAPVO regCaballo = RegCaballoSOAPVO
+							.crearRegCarrCabSOAPVO(ormRegCaballo[i]);
+					coleccionRegCaballoSOAPVO.add(regCaballo);
 				}// fin guardando resultados
 				Gson gson = new Gson();
-				json = gson.toJson(coleccionRegCarrCabSOAPVO);
+				json = gson.toJson(coleccionRegCaballoSOAPVO);
 			}
 
 		} catch (PersistentException e) {
@@ -70,21 +71,21 @@ public class RegCarrCabSOA {
 		} else {
 			try {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
-				Collection<RegCarrCabSOAPVO> colectionRegCarrCabSOAPVO = new ArrayList<RegCarrCabSOAPVO>();
-				orm.Tap_regcarrcab ormRegCarrCab;
+				Collection<RegCaballoSOAPVO> colectionRegCaballoSOAPVO = new ArrayList<RegCaballoSOAPVO>();
+				orm.Tap_regcaballo ormRegCarrCab;
 				// Busca al anotador con esa id
-				ormRegCarrCab = lDAOFactory.getTap_regcarrcabDAO()
-						.loadTap_regcarrcabByQuery("rcc_id='" + id + "'", null);
+				ormRegCarrCab = lDAOFactory.getTap_regcaballoDAO()
+						.loadTap_regcaballoByQuery("rc_id='" + id + "'", null);
 				// Si no se encuentra el anotador, devuelve un 1, de lo contrario,
 				// agrega al anotador a la coleccion y lo retorna
 				if (ormRegCarrCab == null) {
 					json = "1";
 				} else {
-					RegCarrCabSOAPVO pista = RegCarrCabSOAPVO
+					RegCaballoSOAPVO regCaballo = RegCaballoSOAPVO
 							.crearRegCarrCabSOAPVO(ormRegCarrCab);
-					colectionRegCarrCabSOAPVO.add(pista);
+					colectionRegCaballoSOAPVO.add(regCaballo);
 					Gson gson = new Gson();
-					json = gson.toJson(colectionRegCarrCabSOAPVO);
+					json = gson.toJson(colectionRegCaballoSOAPVO);
 				}// fin guardando resultado
 			} catch (PersistentException e) {
 				// TODO Auto-generated catch block
@@ -95,5 +96,99 @@ public class RegCarrCabSOA {
 		}
 		return json;
 	}
+	
+	/**
+	 * Busca los alumnos por curso y los retorna como json.
+	 * Si el id del curso es nulo retorna 0, si no encuentra alumnos retorna 1
+	 * y si ocurre una excepcion retorna 2
+	 * 
+	 * @param idCaballo
+	 * @return
+	 */
+	public static String getByCaballo(int idCaballo) {
+		String json = null;
+		// Comprueba si la variable ingresada es nula
+		if (idCaballo == 0) {
+			// Retorna un 0, indicando que el dato ingresado es nulo
+			json = "0";
+		} else {
+			try {
+				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
+				Collection<RegCaballoSOAPVO> colectionCaballoSOAPVO = new ArrayList<RegCaballoSOAPVO>();
+				orm.Tap_regcaballo[] ormRegCaballos;
+				// Busca todos los alumnos en el curso
+				ormRegCaballos = lDAOFactory.getTap_regcaballoDAO()
+						.listTap_regcaballoByQuery(
+								"tap_caballocab_id='" + idCaballo + "'", null);
+				// Si no se encuentran alumnos, devuelve un 1, de lo sontrario,
+				// agrega los alumnos a la coleccion y lo retorna
+				if (ormRegCaballos.length == 0) {
+					json = "1";
+				} else {
+					for (int i = 0; i < ormRegCaballos.length; i++) {
+						RegCaballoSOAPVO regCaballo = RegCaballoSOAPVO
+								.crearRegCarrCabSOAPVO(ormRegCaballos[i]);
+						colectionCaballoSOAPVO.add(regCaballo);
+					}// fin guardando resultados
+					Gson gson = new Gson();
+					json = gson.toJson(colectionCaballoSOAPVO);
+				}
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				// Retorna 2 indicando excepcion
+				json = "2";
+			}
+		}
+		return json;
+	}
+	
+	/**
+	 * Busca los alumnos por curso y los retorna como json.
+	 * Si el id del curso es nulo retorna 0, si no encuentra alumnos retorna 1
+	 * y si ocurre una excepcion retorna 2
+	 * 
+	 * @param idCarrera
+	 * @return
+	 */
+	public static String getByCarrera(int idCarrera) {
+		String json = null;
+		// Comprueba si la variable ingresada es nula
+		if (idCarrera == 0) {
+			// Retorna un 0, indicando que el dato ingresado es nulo
+			json = "0";
+		} else {
+			try {
+				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
+				Collection<RegCaballoSOAPVO> colectionCarreraSOAPVO = new ArrayList<RegCaballoSOAPVO>();
+				orm.Tap_regcaballo[] ormRegCaballos;
+				// Busca todos los alumnos en el curso
+				ormRegCaballos = lDAOFactory.getTap_regcaballoDAO()
+						.listTap_regcaballoByQuery(
+								"tap_carreracar_id='" + idCarrera + "'", null);
+				// Si no se encuentran alumnos, devuelve un 1, de lo sontrario,
+				// agrega los alumnos a la coleccion y lo retorna
+				if (ormRegCaballos.length == 0) {
+					json = "1";
+				} else {
+					for (int i = 0; i < ormRegCaballos.length; i++) {
+						RegCaballoSOAPVO regCaballo = RegCaballoSOAPVO
+								.crearRegCarrCabSOAPVO(ormRegCaballos[i]);
+						colectionCarreraSOAPVO.add(regCaballo);
+					}// fin guardando resultados
+					Gson gson = new Gson();
+					json = gson.toJson(colectionCarreraSOAPVO);
+				}
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				// Retorna 2 indicando excepcion
+				json = "2";
+			}
+		}
+		return json;
+	}
+	
+	
 	
 }
