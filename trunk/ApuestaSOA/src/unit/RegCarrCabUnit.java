@@ -14,6 +14,10 @@ public class RegCarrCabUnit {
 				+ new ws.RegCarrCabSOA().getById(1));
 		System.out.println("Resultado Reg todas "
 				+ new ws.RegCarrCabSOA().getAll());
+		System.out.println("Resultado Reg caballo "
+				+ new ws.RegCarrCabSOA().getByCaballo(2));
+		System.out.println("Resultado Reg Carrera "
+				+ new ws.RegCarrCabSOA().getByCarrera(5));
 		
 		System.out.println("FIN ");
 	}
