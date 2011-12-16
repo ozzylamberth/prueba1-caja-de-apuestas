@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Tap_apuesta" table="tap_apuesta" lazy="false">
+		<id name="ap_id" column="ap_id" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="ap_monto" column="ap_monto" type="integer" length="10" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Campo que almacena el monto de un registro de una anotacion.
+			</meta>
+		</property>
+		<many-to-one name="tap_cajacaj" cascade="lock" column="tap_cajacaj_id" class="orm.Tap_caja" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<many-to-one name="tap_carreracar" cascade="lock" column="tap_carreracar_id" class="orm.Tap_carrera" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

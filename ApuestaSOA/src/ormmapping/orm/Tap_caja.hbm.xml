@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Tap_caja" table="tap_caja" lazy="false">
+		<id name="caj_id" column="caj_id" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="caj_nombre" column="caj_nombre" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Campo que almacena el nombre de un registro de una caja.
+			</meta>
+		</property>
+		<set name="ORM_Tap_apuesta" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="tap_cajacaj_id" not-null="true"/>
+			<one-to-many class="orm.Tap_apuesta"/>
+		</set>
+	</class>
+</hibernate-mapping>

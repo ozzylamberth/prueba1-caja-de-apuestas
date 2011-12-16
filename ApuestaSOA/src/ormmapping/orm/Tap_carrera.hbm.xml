@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Tap_carrera" table="tap_carrera" lazy="false">
+		<id name="car_id" column="car_id" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="car_numero" column="car_numero" type="integer" length="10" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Campo que almacena el numero de un registro de una carrera.
+			</meta>
+		</property>
+		<property name="car_fecha" column="car_fecha" type="date" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Campo que almacena la fecha de un registro de una carrera.
+			</meta>
+		</property>
+		<many-to-one name="tap_pistapis" cascade="lock" column="tap_pistapis_id" class="orm.Tap_pista" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<many-to-one name="tap_caballocab" cascade="lock" column="tap_caballocab_id" class="orm.Tap_caballo" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<set name="ORM_Tap_apuesta" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="tap_carreracar_id" not-null="true"/>
+			<one-to-many class="orm.Tap_apuesta"/>
+		</set>
+	</class>
+</hibernate-mapping>

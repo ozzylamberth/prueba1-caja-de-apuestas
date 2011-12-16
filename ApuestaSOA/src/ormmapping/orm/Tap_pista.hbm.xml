@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Tap_pista" table="tap_pista" lazy="false">
+		<id name="pis_id" column="pis_id" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="pis_nombre" column="pis_nombre" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Campo que almacena el nombre de un registro de una pista.
+			</meta>
+		</property>
+		<set name="ORM_Tap_carrera" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="tap_pistapis_id" not-null="true"/>
+			<one-to-many class="orm.Tap_carrera"/>
+		</set>
+	</class>
+</hibernate-mapping>
