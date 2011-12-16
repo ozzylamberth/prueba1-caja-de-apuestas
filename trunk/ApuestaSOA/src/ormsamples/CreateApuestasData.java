@@ -22,14 +22,16 @@ public class CreateApuestasData {
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             oRMTap_apuesta1.setApu_monto(1000);
             //Busca un registro por id
-			orm.dao.Tap_regcarrcabDAO oRMTap_regCarrCabDAO1 = lDAOFactory.getTap_regcarrcabDAO();
-			orm.Tap_regcarrcab oRMTap_regCarrCab1 = oRMTap_regCarrCabDAO1.loadTap_regcarrcabByQuery("rcc_id='1'", null);
+			orm.dao.Tap_regcaballoDAO oRMTap_regCarrCabDAO1 = lDAOFactory.getTap_regcaballoDAO();
+			orm.Tap_regcaballo oRMTap_regCarrCab1 = oRMTap_regCarrCabDAO1.loadTap_regcaballoByQuery("rc_id='1'", null);
             //Setea el registro a la apuesta
+			System.out.println(oRMTap_regCarrCab1.getTap_caballocab().getCab_nombre());
             oRMTap_apuesta1.setTap_regcarrcabrcc(oRMTap_regCarrCab1);
             //Busca una caja por id
 			orm.dao.Tap_cajaDAO oRMTap_cajaDAO1 = lDAOFactory.getTap_cajaDAO();
-			orm.Tap_caja oRMTap_caja1 = oRMTap_cajaDAO1.loadTap_cajaByQuery("caj_id='1'", null);
+		    orm.Tap_caja oRMTap_caja1 = oRMTap_cajaDAO1.loadTap_cajaByQuery("caj_id='1'", null);
             //Setea la caja a la apuesta
+			System.out.println(oRMTap_caja1);
             oRMTap_apuesta1.setTap_cajacaj(oRMTap_caja1);
             oRMTap_apuestasDAO.save(oRMTap_apuesta1);
             
@@ -37,8 +39,8 @@ public class CreateApuestasData {
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             oRMTap_apuesta2.setApu_monto(5000);
             //Busca un registro por id
-			orm.dao.Tap_regcarrcabDAO oRMTap_regCarrCabDAO2 = lDAOFactory.getTap_regcarrcabDAO();
-			orm.Tap_regcarrcab oRMTap_regCarrCab2 = oRMTap_regCarrCabDAO2.loadTap_regcarrcabByQuery("rcc_id='1'", null);
+			orm.dao.Tap_regcaballoDAO oRMTap_regCarrCabDAO2 = lDAOFactory.getTap_regcaballoDAO();
+			orm.Tap_regcaballo oRMTap_regCarrCab2 = oRMTap_regCarrCabDAO2.loadTap_regcaballoByQuery("rc_id='1'", null);
             //Setea el registro a la apuesta
             oRMTap_apuesta2.setTap_regcarrcabrcc(oRMTap_regCarrCab2);
             //Busca una caja por id
@@ -52,8 +54,8 @@ public class CreateApuestasData {
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             oRMTap_apuesta3.setApu_monto(4500);
             //Busca un registro por id
-			orm.dao.Tap_regcarrcabDAO oRMTap_regCarrCabDAO3 = lDAOFactory.getTap_regcarrcabDAO();
-			orm.Tap_regcarrcab oRMTap_regCarrCab3 = oRMTap_regCarrCabDAO3.loadTap_regcarrcabByQuery("rcc_id='1'", null);
+			orm.dao.Tap_regcaballoDAO oRMTap_regCarrCabDAO3 = lDAOFactory.getTap_regcaballoDAO();
+			orm.Tap_regcaballo oRMTap_regCarrCab3 = oRMTap_regCarrCabDAO3.loadTap_regcaballoByQuery("rc_id='1'", null);
             //Setea el registro a la apuesta
             oRMTap_apuesta3.setTap_regcarrcabrcc(oRMTap_regCarrCab3);
             //Busca una caja por id
@@ -67,8 +69,8 @@ public class CreateApuestasData {
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             oRMTap_apuesta4.setApu_monto(500);
             //Busca un registro por id
-			orm.dao.Tap_regcarrcabDAO oRMTap_regCarrCabDAO4 = lDAOFactory.getTap_regcarrcabDAO();
-			orm.Tap_regcarrcab oRMTap_regCarrCab4 = oRMTap_regCarrCabDAO4.loadTap_regcarrcabByQuery("rcc_id='3'", null);
+			orm.dao.Tap_regcaballoDAO oRMTap_regCarrCabDAO4 = lDAOFactory.getTap_regcaballoDAO();
+			orm.Tap_regcaballo oRMTap_regCarrCab4 = oRMTap_regCarrCabDAO4.loadTap_regcaballoByQuery("rc_id='3'", null);
             //Setea el registro a la apuesta
             oRMTap_apuesta4.setTap_regcarrcabrcc(oRMTap_regCarrCab4);
             //Busca una caja por id
@@ -82,8 +84,8 @@ public class CreateApuestasData {
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tda_anotacion, tan_nombre
             oRMTap_apuesta5.setApu_monto(10000);
             //Busca un registro por id
-			orm.dao.Tap_regcarrcabDAO oRMTap_regCarrCabDAO5 = lDAOFactory.getTap_regcarrcabDAO();
-			orm.Tap_regcarrcab oRMTap_regCarrCab5 = oRMTap_regCarrCabDAO5.loadTap_regcarrcabByQuery("rcc_id='3'", null);
+			orm.dao.Tap_regcaballoDAO oRMTap_regCarrCabDAO5 = lDAOFactory.getTap_regcaballoDAO();
+			orm.Tap_regcaballo oRMTap_regCarrCab5 = oRMTap_regCarrCabDAO5.loadTap_regcaballoByQuery("rc_id='3'", null);
             //Setea el registro a la apuesta
             oRMTap_apuesta5.setTap_regcarrcabrcc(oRMTap_regCarrCab5);
             //Busca una caja por id

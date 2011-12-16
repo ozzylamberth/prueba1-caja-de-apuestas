@@ -30,13 +30,13 @@ public class CreateApuestaData {
 			orm.Tap_carrera oRMTap_carrera = oRMTap_carreraDAO.createTap_carrera();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tap_regcarrcab, tap_pistapis, car_fecha, car_numero
 			oRMTap_carreraDAO.save(oRMTap_carrera);
-			orm.dao.Tap_regcarrcabDAO oRMTap_regcarrcabDAO = lDAOFactory.getTap_regcarrcabDAO();
-			orm.Tap_regcarrcab oRMTap_regcarrcab = oRMTap_regcarrcabDAO.createTap_regcarrcab();
+			orm.dao.Tap_regcaballoDAO oRMTap_regcaballoDAO = lDAOFactory.getTap_regcaballoDAO();
+			orm.Tap_regcaballo oRMTap_regcaballo = oRMTap_regcaballoDAO.createTap_regcaballo();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tap_apuesta, tap_carreracar, tap_caballocab
-			oRMTap_regcarrcabDAO.save(oRMTap_regcarrcab);
+			oRMTap_regcaballoDAO.save(oRMTap_regcaballo);
 			orm.dao.Tap_apuestaDAO oRMTap_apuestaDAO = lDAOFactory.getTap_apuestaDAO();
 			orm.Tap_apuesta oRMTap_apuesta = oRMTap_apuestaDAO.createTap_apuesta();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tap_cajacaj, tap_regcarrcabrcc, apu_monto
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tap_cajacaj, tap_regcarrcabrcc, apu_fecha, apu_monto
 			oRMTap_apuestaDAO.save(oRMTap_apuesta);
 			t.commit();
 		}
