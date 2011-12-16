@@ -22,11 +22,12 @@ public abstract class DAOFactory {
 		return _factory;
 	}
 	
-	public abstract Tap_caballoDAO getTap_caballoDAO();
 	public abstract Tap_jineteDAO getTap_jineteDAO();
-	public abstract Tap_apuestaDAO getTap_apuestaDAO();
-	public abstract Tap_carreraDAO getTap_carreraDAO();
-	public abstract Tap_pistaDAO getTap_pistaDAO();
+	public abstract Tap_caballoDAO getTap_caballoDAO();
 	public abstract Tap_cajaDAO getTap_cajaDAO();
+	public abstract Tap_pistaDAO getTap_pistaDAO();
+	public abstract Tap_carreraDAO getTap_carreraDAO();
+	public abstract Tap_regcaballoDAO getTap_regcaballoDAO();
+	public abstract Tap_apuestaDAO getTap_apuestaDAO();
 }
 

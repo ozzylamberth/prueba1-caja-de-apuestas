@@ -14,13 +14,16 @@
 package orm;
 
 import java.io.Serializable;
+/**
+ * Tabla que almacena los registros de los caballos.
+ */
 public class Tap_caballo implements Serializable {
 	public Tap_caballo() {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == orm.ORMConstants.KEY_TAP_CABALLO_TAP_CARRERA) {
-			return ORM_tap_carrera;
+		if (key == orm.ORMConstants.KEY_TAP_CABALLO_TAP_REGCARRCAB) {
+			return ORM_tap_regcarrcab;
 		}
 		
 		return null;
@@ -39,7 +42,7 @@ public class Tap_caballo implements Serializable {
 	
 	private orm.Tap_jinete tap_jinetejin;
 	
-	private java.util.Set ORM_tap_carrera = new java.util.HashSet();
+	private java.util.Set ORM_tap_regcarrcab = new java.util.HashSet();
 	
 	private void setCab_id(int value) {
 		this.cab_id = value;
@@ -84,15 +87,15 @@ public class Tap_caballo implements Serializable {
 		return tap_jinetejin;
 	}
 	
-	private void setORM_Tap_carrera(java.util.Set value) {
-		this.ORM_tap_carrera = value;
+	private void setORM_Tap_regcarrcab(java.util.Set value) {
+		this.ORM_tap_regcarrcab = value;
 	}
 	
-	private java.util.Set getORM_Tap_carrera() {
-		return ORM_tap_carrera;
+	private java.util.Set getORM_Tap_regcarrcab() {
+		return ORM_tap_regcarrcab;
 	}
 	
-	public final orm.Tap_carreraSetCollection tap_carrera = new orm.Tap_carreraSetCollection(this, _ormAdapter, orm.ORMConstants.KEY_TAP_CABALLO_TAP_CARRERA, orm.ORMConstants.KEY_TAP_CARRERA_TAP_CABALLOCAB, orm.ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final orm.Tap_regcaballoSetCollection tap_regcarrcab = new orm.Tap_regcaballoSetCollection(this, _ormAdapter, orm.ORMConstants.KEY_TAP_CABALLO_TAP_REGCARRCAB, orm.ORMConstants.KEY_TAP_REGCABALLO_TAP_CABALLOCAB, orm.ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getCab_id());

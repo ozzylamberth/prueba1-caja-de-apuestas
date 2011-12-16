@@ -19,13 +19,15 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class Tap_apuestaCriteria extends AbstractORMCriteria {
-	public final IntegerExpression ap_id;
-	public final IntegerExpression ap_monto;
+	public final IntegerExpression apu_id;
+	public final IntegerExpression apu_monto;
+	public final DateExpression apu_fecha;
 	
 	public Tap_apuestaCriteria(Criteria criteria) {
 		super(criteria);
-		ap_id = new IntegerExpression("ap_id", this);
-		ap_monto = new IntegerExpression("ap_monto", this);
+		apu_id = new IntegerExpression("apu_id", this);
+		apu_monto = new IntegerExpression("apu_monto", this);
+		apu_fecha = new DateExpression("apu_fecha", this);
 	}
 	
 	public Tap_apuestaCriteria(PersistentSession session) {
@@ -36,12 +38,12 @@ public class Tap_apuestaCriteria extends AbstractORMCriteria {
 		this(orm.ApuestaPersistentManager.instance().getSession());
 	}
 	
-	public Tap_cajaCriteria createTap_cajacajCriteria() {
-		return new Tap_cajaCriteria(createCriteria("tap_cajacaj"));
+	public Tap_regcaballoCriteria createTap_regcarrcabrccCriteria() {
+		return new Tap_regcaballoCriteria(createCriteria("tap_regcarrcabrcc"));
 	}
 	
-	public Tap_carreraCriteria createTap_carreracarCriteria() {
-		return new Tap_carreraCriteria(createCriteria("tap_carreracar"));
+	public Tap_cajaCriteria createTap_cajacajCriteria() {
+		return new Tap_cajaCriteria(createCriteria("tap_cajacaj"));
 	}
 	
 	public Tap_apuesta uniqueTap_apuesta() {

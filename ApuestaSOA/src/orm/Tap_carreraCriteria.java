@@ -42,12 +42,8 @@ public class Tap_carreraCriteria extends AbstractORMCriteria {
 		return new Tap_pistaCriteria(createCriteria("tap_pistapis"));
 	}
 	
-	public Tap_caballoCriteria createTap_caballocabCriteria() {
-		return new Tap_caballoCriteria(createCriteria("tap_caballocab"));
-	}
-	
-	public orm.Tap_apuestaCriteria createTap_apuestaCriteria() {
-		return new orm.Tap_apuestaCriteria(createCriteria("ORM_Tap_apuesta"));
+	public orm.Tap_regcaballoCriteria createTap_regcarrcabCriteria() {
+		return new orm.Tap_regcaballoCriteria(createCriteria("ORM_Tap_regcarrcab"));
 	}
 	
 	public Tap_carrera uniqueTap_carrera() {

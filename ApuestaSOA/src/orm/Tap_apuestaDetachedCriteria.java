@@ -19,27 +19,30 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class Tap_apuestaDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression ap_id;
-	public final IntegerExpression ap_monto;
+	public final IntegerExpression apu_id;
+	public final IntegerExpression apu_monto;
+	public final DateExpression apu_fecha;
 	
 	public Tap_apuestaDetachedCriteria() {
 		super(orm.Tap_apuesta.class, orm.Tap_apuestaCriteria.class);
-		ap_id = new IntegerExpression("ap_id", this.getDetachedCriteria());
-		ap_monto = new IntegerExpression("ap_monto", this.getDetachedCriteria());
+		apu_id = new IntegerExpression("apu_id", this.getDetachedCriteria());
+		apu_monto = new IntegerExpression("apu_monto", this.getDetachedCriteria());
+		apu_fecha = new DateExpression("apu_fecha", this.getDetachedCriteria());
 	}
 	
 	public Tap_apuestaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, orm.Tap_apuestaCriteria.class);
-		ap_id = new IntegerExpression("ap_id", this.getDetachedCriteria());
-		ap_monto = new IntegerExpression("ap_monto", this.getDetachedCriteria());
+		apu_id = new IntegerExpression("apu_id", this.getDetachedCriteria());
+		apu_monto = new IntegerExpression("apu_monto", this.getDetachedCriteria());
+		apu_fecha = new DateExpression("apu_fecha", this.getDetachedCriteria());
+	}
+	
+	public Tap_regcaballoDetachedCriteria createTap_regcarrcabrccCriteria() {
+		return new Tap_regcaballoDetachedCriteria(createCriteria("tap_regcarrcabrcc"));
 	}
 	
 	public Tap_cajaDetachedCriteria createTap_cajacajCriteria() {
 		return new Tap_cajaDetachedCriteria(createCriteria("tap_cajacaj"));
-	}
-	
-	public Tap_carreraDetachedCriteria createTap_carreracarCriteria() {
-		return new Tap_carreraDetachedCriteria(createCriteria("tap_carreracar"));
 	}
 	
 	public Tap_apuesta uniqueTap_apuesta(PersistentSession session) {
