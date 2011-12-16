@@ -11,26 +11,22 @@ import com.google.gson.Gson;
 
 public class CarreraSOA {
 
-	
 	/**
-	 * Busca todos los cursos y los retorna como json.
-	 * Si no encuentra cursos retorna 1
+	 * Busca todos las carreras y las retorna como json.
+	 * Si no encuentra carreras retorna 1
 	 * y si ocurre una excepcion retorna 2
 	 * 
-	 * @return
+	 * @return json
 	 */
 	public static String getAll() {
-
 		String json = null;
 		orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 		Collection<CarreraSOAPVO> coleccionCarreraSOAPVO = new ArrayList<CarreraSOAPVO>();
 		orm.Tap_carrera[] ormCarreras;
 		try {
-
 				ormCarreras = lDAOFactory.getTap_carreraDAO()
 						.listTap_carreraByQuery(null, null);
 				// busqueda de todos los registros existentes
-
 			if (ormCarreras.length == 0) {// si no se encontraron registros
 				json = "1";
 			} else {// si se encontraron registros
@@ -42,7 +38,6 @@ public class CarreraSOA {
 				Gson gson = new Gson();
 				json = gson.toJson(coleccionCarreraSOAPVO);
 			}
-
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,12 +47,12 @@ public class CarreraSOA {
 	}
 	
 	/**
-	 * Busca un curso por id y lo retorna como json.
+	 * Busca una carrera por id y la retorna como json.
 	 * Si el id es nulo retorna 0, si no encuentra el curso retorna 1
 	 * y si ocurre una excepcion retorna 2
 	 * 
 	 * @param id
-	 * @return
+	 * @return json
 	 */
 	
 	public static String getById(int id) {
@@ -71,11 +66,11 @@ public class CarreraSOA {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				Collection<CarreraSOAPVO> colectionCarreraSOAPVO = new ArrayList<CarreraSOAPVO>();
 				orm.Tap_carrera ormCarrera;
-				// Busca al anotador con esa id
+				// Busca la carrera con esa id
 				ormCarrera = lDAOFactory.getTap_carreraDAO()
 						.loadTap_carreraByQuery("car_id='" + id + "'", null);
-				// Si no se encuentra el anotador, devuelve un 1, de lo contrario,
-				// agrega al anotador a la coleccion y lo retorna
+				// Si no se encuentra la carrera, devuelve un 1, de lo contrario,
+				// agrega la carrera a la coleccion y lo retorna
 				if (ormCarrera == null) {
 					json = "1";
 				} else {

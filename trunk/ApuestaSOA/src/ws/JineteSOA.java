@@ -10,16 +10,13 @@ import SOAPVO.JineteSOAPVO;
 import com.google.gson.Gson;
 
 public class JineteSOA {
-
-	
-
 	
 	/**
-	 * Busca todos los cursos y los retorna como json.
-	 * Si no encuentra cursos retorna 1
+	 * Busca todos los jinetes y los retorna como json.
+	 * Si no encuentra jinetes retorna 1
 	 * y si ocurre una excepcion retorna 2
 	 * 
-	 * @return
+	 * @return json
 	 */
 	public static String getAll() {
 
@@ -28,11 +25,9 @@ public class JineteSOA {
 		Collection<JineteSOAPVO> coleccionJineteSOAPVO = new ArrayList<JineteSOAPVO>();
 		orm.Tap_jinete[] ormJinetes;
 		try {
-
 				ormJinetes = lDAOFactory.getTap_jineteDAO()
 						.listTap_jineteByQuery(null, null);
 				// busqueda de todos los registros existentes
-
 			if (ormJinetes.length == 0) {// si no se encontraron registros
 				json = "1";
 			} else {// si se encontraron registros
@@ -44,7 +39,6 @@ public class JineteSOA {
 				Gson gson = new Gson();
 				json = gson.toJson(coleccionJineteSOAPVO);
 			}
-
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,12 +48,12 @@ public class JineteSOA {
 	}
 	
 	/**
-	 * Busca un curso por id y lo retorna como json.
+	 * Busca un jinete por id y lo retorna como json.
 	 * Si el id es nulo retorna 0, si no encuentra el curso retorna 1
 	 * y si ocurre una excepcion retorna 2
 	 * 
 	 * @param id
-	 * @return
+	 * @return json
 	 */
 	
 	public static String getById(int id) {
@@ -73,11 +67,11 @@ public class JineteSOA {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				Collection<JineteSOAPVO> colectionJineteSOAPVO = new ArrayList<JineteSOAPVO>();
 				orm.Tap_jinete ormJinete;
-				// Busca al anotador con esa id
+				// Busca el jinete con esa id
 				ormJinete = lDAOFactory.getTap_jineteDAO()
 						.loadTap_jineteByQuery("jin_id='" + id + "'", null);
-				// Si no se encuentra el anotador, devuelve un 1, de lo contrario,
-				// agrega al anotador a la coleccion y lo retorna
+				// Si no se encuentra el jinete, devuelve un 1, de lo contrario,
+				// agrega al jinete a la coleccion y lo retorna
 				if (ormJinete == null) {
 					json = "1";
 				} else {

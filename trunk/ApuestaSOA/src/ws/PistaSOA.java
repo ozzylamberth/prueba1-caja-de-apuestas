@@ -13,11 +13,11 @@ public class PistaSOA {
 
 	
 	/**
-	 * Busca todos los cursos y los retorna como json.
-	 * Si no encuentra cursos retorna 1
+	 * Busca todos las pistas y las retorna como json.
+	 * Si no encuentra pistas retorna 1
 	 * y si ocurre una excepcion retorna 2
 	 * 
-	 * @return
+	 * @return json
 	 */
 	public static String getAll() {
 
@@ -26,11 +26,9 @@ public class PistaSOA {
 		Collection<PistaSOAPVO> coleccionPistaSOAPVO = new ArrayList<PistaSOAPVO>();
 		orm.Tap_pista[] ormPistas;
 		try {
-
 				ormPistas = lDAOFactory.getTap_pistaDAO()
 						.listTap_pistaByQuery(null, null);
 				// busqueda de todos los registros existentes
-
 			if (ormPistas.length == 0) {// si no se encontraron registros
 				json = "1";
 			} else {// si se encontraron registros
@@ -42,7 +40,6 @@ public class PistaSOA {
 				Gson gson = new Gson();
 				json = gson.toJson(coleccionPistaSOAPVO);
 			}
-
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,12 +49,12 @@ public class PistaSOA {
 	}
 	
 	/**
-	 * Busca un curso por id y lo retorna como json.
+	 * Busca una pista por id y lo retorna como json.
 	 * Si el id es nulo retorna 0, si no encuentra el curso retorna 1
 	 * y si ocurre una excepcion retorna 2
 	 * 
 	 * @param id
-	 * @return
+	 * @return json
 	 */
 	
 	public static String getById(int id) {
@@ -71,11 +68,11 @@ public class PistaSOA {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				Collection<PistaSOAPVO> colectionPistaSOAPVO = new ArrayList<PistaSOAPVO>();
 				orm.Tap_pista ormPista;
-				// Busca al anotador con esa id
+				// Busca la pista con esa id
 				ormPista = lDAOFactory.getTap_pistaDAO()
 						.loadTap_pistaByQuery("pis_id='" + id + "'", null);
-				// Si no se encuentra el anotador, devuelve un 1, de lo contrario,
-				// agrega al anotador a la coleccion y lo retorna
+				// Si no se encuentra la pista, devuelve un 1, de lo contrario,
+				// agrega la pista a la coleccion y lo retorna
 				if (ormPista == null) {
 					json = "1";
 				} else {

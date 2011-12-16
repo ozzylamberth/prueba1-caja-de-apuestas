@@ -13,24 +13,21 @@ public class CaballoSOA {
 
 
 	/**
-	 * Busca todos los cursos y los retorna como json.
-	 * Si no encuentra cursos retorna 1
+	 * Busca todos los caballos y los retorna como json.
+	 * Si no encuentra caballos retorna 1
 	 * y si ocurre una excepcion retorna 2
 	 * 
-	 * @return
+	 * @return json
 	 */
 	public static String getAll() {
-
 		String json = null;
 		orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 		Collection<CaballoSOAPVO> coleccionCaballoSOAPVO = new ArrayList<CaballoSOAPVO>();
 		orm.Tap_caballo[] ormCaballos;
 		try {
-
 				ormCaballos = lDAOFactory.getTap_caballoDAO()
 						.listTap_caballoByQuery(null, null);
 				// busqueda de todos los registros existentes
-
 			if (ormCaballos.length == 0) {// si no se encontraron registros
 				json = "1";
 			} else {// si se encontraron registros
@@ -42,7 +39,6 @@ public class CaballoSOA {
 				Gson gson = new Gson();
 				json = gson.toJson(coleccionCaballoSOAPVO);
 			}
-
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,12 +48,12 @@ public class CaballoSOA {
 	}
 	
 	/**
-	 * Busca un curso por id y lo retorna como json.
+	 * Busca un caballo por id y lo retorna como json.
 	 * Si el id es nulo retorna 0, si no encuentra el curso retorna 1
 	 * y si ocurre una excepcion retorna 2
 	 * 
 	 * @param id
-	 * @return
+	 * @return json
 	 */
 	
 	public static String getById(int id) {
@@ -71,11 +67,11 @@ public class CaballoSOA {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				Collection<CaballoSOAPVO> colectionCaballoSOAPVO = new ArrayList<CaballoSOAPVO>();
 				orm.Tap_caballo ormCaballo;
-				// Busca al anotador con esa id
+				// Busca al caballo con esa id
 				ormCaballo = lDAOFactory.getTap_caballoDAO()
 						.loadTap_caballoByQuery("cab_id='" + id + "'", null);
-				// Si no se encuentra el anotador, devuelve un 1, de lo contrario,
-				// agrega al anotador a la coleccion y lo retorna
+				// Si no se encuentra el caballo, devuelve un 1, de lo contrario,
+				// agrega al caballo a la coleccion y lo retorna
 				if (ormCaballo == null) {
 					json = "1";
 				} else {

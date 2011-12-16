@@ -17,11 +17,20 @@ import orm.Tap_regcaballo;
 
 public class ApuestaSOA {
 
+	/**
+	 * Ingresa una nueva apuesta a los registros Si alguna variable es nula
+	 * retorna 0, si algun registro no es encontrado retorna 1, si ocurre una
+	 * excepcion retorna 2 y si es exitoso reorna 3
+	 * 
+	 * @param monto
+	 * @param idCaballo
+	 * @param idCarrera
+	 * @param idCaja
+	 * @return respuesta
+	 */
 	public String add(int monto, int idCaballo, int idCarrera, int idCaja) {
-
 		String resultado = "";
 		PersistentTransaction t;
-
 		// valida que los campos no vengan vacios.
 		if ((monto == 0) || (idCaballo == 0) || (idCarrera == 0)
 				|| (idCaja == 0)) {
@@ -36,67 +45,54 @@ public class ApuestaSOA {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				// Instancia DAO
 				/*
-				 * crea nueva anotacion
+				 * crea nueva apuesta
 				 */
 				orm.dao.Tap_apuestaDAO lormTap_apuestaDAO = lDAOFactory
 						.getTap_apuestaDAO();
 				// Instancia objeto orm (vo)
 				orm.Tap_apuesta lormTap_apuesta = lormTap_apuestaDAO
 						.createTap_apuesta();
-
-				/*
-				 * Buscar tipo de anotacion validar si no encuentra objeto y si
-				 * no existe asignar 2 por default con el tipo anotacion neutra
-				 */
-
+				// Busca el caballo con esa id
 				orm.Tap_regcaballo[] ormRegCarreras;
-				// Busca todos los alumnos en el curso
 				ormRegCarreras = lDAOFactory.getTap_regcaballoDAO()
 						.listTap_regcaballoByQuery(
 								"tap_caballocab_id='" + idCaballo + "'", null);
 
 				int id = 0;
-				// Si no se encuentran alumnos, devuelve un 1, de lo sontrario,
-				// agrega los alumnos a la coleccion y lo retorna
+				// si el caballo no es nulo
 				if (ormRegCarreras.length > 0) {
-					int contador = 0;
 					// obtiene los ids de los registros de caballo y carrera
 					// correspondientes a la apuesta
 					for (int i = 0; i < ormRegCarreras.length; i++) {
 						if (ormRegCarreras[i].getTap_carreracar().getCar_id() == idCarrera) {
 							id = ormRegCarreras[i].getRc_id();
-							System.out.print(id);
 						}
 					}
 				}
-
+				// Obtiene el registro del caballo respescto a el id del caballo
+				// y el id de la carrera
 				orm.dao.Tap_regcaballoDAO oRMTap_regCaballoDAO = lDAOFactory
 						.getTap_regcaballoDAO();
 				orm.Tap_regcaballo oRMTan_regCaballo = oRMTap_regCaballoDAO
 						.loadTap_regcaballoByQuery("rc_id='" + id + "'", null);
-
+				// Obtiene la caja correspondiente
 				orm.dao.Tap_cajaDAO oRMTap_cajaDAO = lDAOFactory
 						.getTap_cajaDAO();
 				orm.Tap_caja oRMTap_caja = oRMTap_cajaDAO.loadTap_cajaByQuery(
 						"caj_id='" + idCaja + "'", null);
-
 				// Valida que los objetos encontrados no sean nulos
 				if (oRMTap_caja == null || oRMTap_caja == null) {
 					resultado = "1";
 				} else {// Si no son nulos, los agrega
-
 					Date fCreacion = new Date();
-
 					lormTap_apuesta.setApu_fecha(fCreacion);
 					lormTap_apuesta.setApu_monto(monto);
 					lormTap_apuesta.setTap_cajacaj(oRMTap_caja);
 					lormTap_apuesta.setTap_regcarrcabrcc(oRMTan_regCaballo);
-
 					lormTap_apuestaDAO.save(lormTap_apuesta);
 
 					t.commit();
 					resultado = "3";
-
 				}
 			} catch (PersistentException e1) {
 				// TODO Auto-generated catch block
@@ -108,15 +104,31 @@ public class ApuestaSOA {
 		return resultado;
 	}
 
+	/**
+	 * Obtiene el montoAPagar por la caja para el apostador, dependiendo del
+	 * monto apostado, del caballo al cual le aposto y la carrera
+	 * 
+	 * @param idCarrera
+	 * @param idCaballo
+	 * @param monto
+	 * @return montoAPagar
+	 */
 	public String montoAPagar(int idCarrera, int idCaballo, int monto) {
 		float montoAPagar = 0;
-		float porciento = (float)1/10;
+		float porciento = (float) 1 / 10;
 		float totalCarrera = this.montoByCarrera(idCarrera);
 		float totalCaballo = this.montoByCaballo(idCaballo, idCarrera);
-		montoAPagar = ((totalCarrera - totalCarrera * porciento) / totalCaballo) * monto;
+		montoAPagar = ((totalCarrera - totalCarrera * porciento) / totalCaballo)
+				* monto;
 		return String.valueOf(montoAPagar);
 	}
 
+	/**
+	 * Obtiene el monto total apostado por una carrera
+	 * Si no encuentra registros retorna un -2
+	 * @param idCarrera
+	 * @return monto
+	 */
 	public int montoByCarrera(int idCarrera) {
 		int monto = 0;
 		int[] ids;
@@ -124,33 +136,33 @@ public class ApuestaSOA {
 			try {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				orm.Tap_regcaballo[] ormRegCarreras;
-				// Busca todos los alumnos en el curso
+				// Busca todas las carreras por el id
 				ormRegCarreras = lDAOFactory.getTap_regcaballoDAO()
 						.listTap_regcaballoByQuery(
 								"tap_carreracar_id='" + idCarrera + "'", null);
-				// Si no se encuentran alumnos, devuelve un 1, de lo sontrario,
-				// agrega los alumnos a la coleccion y lo retorna
+				// Si encuentra carreras
 				if (ormRegCarreras.length > 0) {
-					// obtiene los ids de los registros de caballo y carrera
+					// obtiene el id de los registros de carrera
 					// correspondientes a la apuesta
 					ids = new int[ormRegCarreras.length];
 					for (int i = 0; i < ormRegCarreras.length; i++) {
-						ids[i] = ormRegCarreras[i].getRc_id();	
+						ids[i] = ormRegCarreras[i].getRc_id();
 					}
-					
+					// Busca en la apuesta el registro correspondiente
 					if (ids.length > 0) {
 						orm.Tap_apuesta ormApuesta[] = null;
 						for (int i = 0; i < ids.length; i++) {
-							// Busca todos los alumnos en el curso
+							// Busca todos los registros
 							ormApuesta = lDAOFactory.getTap_apuestaDAO()
 									.listTap_apuestaByQuery(
 											"tap_regCaballorc_id='" + ids[i]
 													+ "'", null);
 							if (ormApuesta != null) {
-								for (int i2 = 0; i2 < ormApuesta.length; i2++){
-										monto = ormApuesta[i2].getApu_monto() + monto;
-										//System.out.print(ormApuesta.getApu_monto());
-							}
+								for (int i2 = 0; i2 < ormApuesta.length; i2++) {
+									// Suma de los montos por carrera
+									monto = ormApuesta[i2].getApu_monto()
+											+ monto;
+								}
 							}
 						}
 					}
@@ -165,6 +177,13 @@ public class ApuestaSOA {
 		return monto;
 	}
 
+	/**
+	 * Obtiene el monto por los caballos
+	 * Si no obtiene registros retorna un -2
+	 * @param idCaballo
+	 * @param idCarrera
+	 * @return monto
+	 */
 	public int montoByCaballo(int idCaballo, int idCarrera) {
 		int id = 0;
 		int monto = 0;
@@ -172,14 +191,12 @@ public class ApuestaSOA {
 			try {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				orm.Tap_regcaballo[] ormRegCarreras;
-				// Busca todos los alumnos en el curso
+				// Busca todos los caballos por id en os registros
 				ormRegCarreras = lDAOFactory.getTap_regcaballoDAO()
 						.listTap_regcaballoByQuery(
 								"tap_caballocab_id='" + idCaballo + "'", null);
-				// Si no se encuentran alumnos, devuelve un 1, de lo sontrario,
-				// agrega los alumnos a la coleccion y lo retorna
+				// Si en cuentra caballos
 				if (ormRegCarreras.length > 0) {
-					// int contador = 0;
 					// obtiene los ids de los registros de caballo y carrera
 					// correspondientes a la apuesta
 					for (int i = 0; i < ormRegCarreras.length; i++) {
@@ -187,6 +204,7 @@ public class ApuestaSOA {
 							id = ormRegCarreras[i].getRc_id();
 						}
 					}
+					//Busca los registros en las apuestas para obtener los montos
 					if (id > 0) {
 						orm.Tap_apuesta[] ormApuesta = null;
 						ormApuesta = lDAOFactory.getTap_apuestaDAO()
@@ -195,6 +213,7 @@ public class ApuestaSOA {
 										null);
 						if (ormApuesta != null) {
 							for (int i = 0; i < ormApuesta.length; i++) {
+								//suma de los montos
 								monto = monto + ormApuesta[i].getApu_monto();
 							}
 						}
@@ -211,10 +230,10 @@ public class ApuestaSOA {
 	}
 
 	/**
-	 * Busca todos los alumnos y los retorna como json. Si no encuentra alumnos
+	 * Busca todos las apuestas y los retorna como json. Si no encuentra apuestas
 	 * retorna 1 y si ocurre una excepcion retorna 2
 	 * 
-	 * @return
+	 * @return json
 	 */
 	public static String getAll() {
 		String json = null;
