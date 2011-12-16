@@ -1,8 +1,9 @@
 package SOAPVO;
 
-public class RegCarrCabSOAPVO {
+public class RegCaballoSOAPVO {
 	
 	int id;
+	int idCaballo;
 	String nombreCaballo;
 	int numeroCarrera;
 	
@@ -12,9 +13,10 @@ public class RegCarrCabSOAPVO {
 	 * @return apuesta
 	 */
 	
-	public static RegCarrCabSOAPVO crearRegCarrCabSOAPVO(orm.Tap_regcarrcab regCarrCabOrm) {
-		RegCarrCabSOAPVO objeto = new RegCarrCabSOAPVO();
-		objeto.setId(regCarrCabOrm.getRcc_id());
+	public static RegCaballoSOAPVO crearRegCarrCabSOAPVO(orm.Tap_regcaballo regCarrCabOrm) {
+		RegCaballoSOAPVO objeto = new RegCaballoSOAPVO();
+		objeto.setId(regCarrCabOrm.getRc_id());
+		objeto.setIdCaballo(regCarrCabOrm.getTap_caballocab().getCab_id());
 		objeto.setNombreCaballo(regCarrCabOrm.getTap_caballocab().getCab_nombre());
 		objeto.setNumeroCarrera(regCarrCabOrm.getTap_carreracar().getCar_numero());
 		return objeto;
@@ -26,6 +28,16 @@ public class RegCarrCabSOAPVO {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
+	public int getIdCaballo() {
+		return idCaballo;
+	}
+
+	public void setIdCaballo(int idCaballo) {
+		this.idCaballo = idCaballo;
+	}
+
 	public String getNombreCaballo() {
 		return nombreCaballo;
 	}
