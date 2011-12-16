@@ -29,7 +29,7 @@ public class Tap_cajaCriteria extends AbstractORMCriteria {
 	}
 	
 	public Tap_cajaCriteria(PersistentSession session) {
-		this(session.createCriteria(Tap_j.class));
+		this(session.createCriteria(Tap_caja.class));
 	}
 	
 	public Tap_cajaCriteria() throws PersistentException {
@@ -40,13 +40,13 @@ public class Tap_cajaCriteria extends AbstractORMCriteria {
 		return new orm.Tap_apuestaCriteria(createCriteria("ORM_Tap_apuesta"));
 	}
 	
-	public Tap_j uniqueTap_caja() {
-		return (Tap_j) super.uniqueResult();
+	public Tap_caja uniqueTap_caja() {
+		return (Tap_caja) super.uniqueResult();
 	}
 	
-	public Tap_j[] listTap_caja() {
+	public Tap_caja[] listTap_caja() {
 		java.util.List list = super.list();
-		return (Tap_j[]) list.toArray(new Tap_j[list.size()]);
+		return (Tap_caja[]) list.toArray(new Tap_caja[list.size()]);
 	}
 }
 

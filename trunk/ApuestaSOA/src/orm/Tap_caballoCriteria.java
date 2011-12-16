@@ -40,8 +40,8 @@ public class Tap_caballoCriteria extends AbstractORMCriteria {
 		return new Tap_jineteCriteria(createCriteria("tap_jinetejin"));
 	}
 	
-	public orm.Tap_carreraCriteria createTap_carreraCriteria() {
-		return new orm.Tap_carreraCriteria(createCriteria("ORM_Tap_carrera"));
+	public orm.Tap_regcaballoCriteria createTap_regcarrcabCriteria() {
+		return new orm.Tap_regcaballoCriteria(createCriteria("ORM_Tap_regcarrcab"));
 	}
 	
 	public Tap_caballo uniqueTap_caballo() {

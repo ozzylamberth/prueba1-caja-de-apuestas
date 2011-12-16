@@ -38,8 +38,8 @@ public class Tap_caballoDetachedCriteria extends AbstractORMDetachedCriteria {
 		return new Tap_jineteDetachedCriteria(createCriteria("tap_jinetejin"));
 	}
 	
-	public orm.Tap_carreraDetachedCriteria createTap_carreraCriteria() {
-		return new orm.Tap_carreraDetachedCriteria(createCriteria("ORM_Tap_carrera"));
+	public orm.Tap_regcaballoDetachedCriteria createTap_regcarrcabCriteria() {
+		return new orm.Tap_regcaballoDetachedCriteria(createCriteria("ORM_Tap_regcarrcab"));
 	}
 	
 	public Tap_caballo uniqueTap_caballo(PersistentSession session) {

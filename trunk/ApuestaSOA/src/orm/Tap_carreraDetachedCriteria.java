@@ -41,12 +41,8 @@ public class Tap_carreraDetachedCriteria extends AbstractORMDetachedCriteria {
 		return new Tap_pistaDetachedCriteria(createCriteria("tap_pistapis"));
 	}
 	
-	public Tap_caballoDetachedCriteria createTap_caballocabCriteria() {
-		return new Tap_caballoDetachedCriteria(createCriteria("tap_caballocab"));
-	}
-	
-	public orm.Tap_apuestaDetachedCriteria createTap_apuestaCriteria() {
-		return new orm.Tap_apuestaDetachedCriteria(createCriteria("ORM_Tap_apuesta"));
+	public orm.Tap_regcaballoDetachedCriteria createTap_regcarrcabCriteria() {
+		return new orm.Tap_regcaballoDetachedCriteria(createCriteria("ORM_Tap_regcarrcab"));
 	}
 	
 	public Tap_carrera uniqueTap_carrera(PersistentSession session) {
