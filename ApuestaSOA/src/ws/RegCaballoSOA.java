@@ -12,14 +12,14 @@ import SOAPVO.RegCaballoSOAPVO;
 
 import com.google.gson.Gson;
 
-public class RegCarrCabSOA {
+public class RegCaballoSOA {
 
 	/**
-	 * Busca todos los cursos y los retorna como json.
-	 * Si no encuentra cursos retorna 1
-	 * y si ocurre una excepcion retorna 2
+	 * Busca todos los registros de las carreras de los caballos y los retorna como json. 
+	 * Si no encuentra registros retorna 1.
+	 * si ocurre una excepcion retorna 2
 	 * 
-	 * @return
+	 * @return json
 	 */
 	public static String getAll() {
 
@@ -28,11 +28,9 @@ public class RegCarrCabSOA {
 		Collection<RegCaballoSOAPVO> coleccionRegCaballoSOAPVO = new ArrayList<RegCaballoSOAPVO>();
 		orm.Tap_regcaballo[] ormRegCaballo;
 		try {
-
-				ormRegCaballo = lDAOFactory.getTap_regcaballoDAO()
-						.listTap_regcaballoByQuery(null, null);
-				// busqueda de todos los registros existentes
-
+			ormRegCaballo = lDAOFactory.getTap_regcaballoDAO()
+					.listTap_regcaballoByQuery(null, null);
+			// busqueda de todos los registros existentes
 			if (ormRegCaballo.length == 0) {// si no se encontraron registros
 				json = "1";
 			} else {// si se encontraron registros
@@ -44,7 +42,6 @@ public class RegCarrCabSOA {
 				Gson gson = new Gson();
 				json = gson.toJson(coleccionRegCaballoSOAPVO);
 			}
-
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,16 +49,16 @@ public class RegCarrCabSOA {
 		}
 		return json;
 	}
-	
+
 	/**
-	 * Busca un curso por id y lo retorna como json.
-	 * Si el id es nulo retorna 0, si no encuentra el curso retorna 1
-	 * y si ocurre una excepcion retorna 2
+	 * Busca un registro de una carrera de un caballo  por id y lo retorna como json. 
+	 * Si el id es nulo retorna 0,
+	 * si no encuentra el curso retorna 1 y si ocurre una excepcion retorna 2
 	 * 
 	 * @param id
-	 * @return
+	 * @return json
 	 */
-	
+
 	public static String getById(int id) {
 		String json = null;
 		// Comprueba si la variable ingresada es nula
@@ -73,11 +70,12 @@ public class RegCarrCabSOA {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				Collection<RegCaballoSOAPVO> colectionRegCaballoSOAPVO = new ArrayList<RegCaballoSOAPVO>();
 				orm.Tap_regcaballo ormRegCarrCab;
-				// Busca al anotador con esa id
+				// Busca el registro con esa id
 				ormRegCarrCab = lDAOFactory.getTap_regcaballoDAO()
 						.loadTap_regcaballoByQuery("rc_id='" + id + "'", null);
-				// Si no se encuentra el anotador, devuelve un 1, de lo contrario,
-				// agrega al anotador a la coleccion y lo retorna
+				// Si no se encuentra el registro, devuelve un 1, de lo
+				// contrario,
+				// agrega el registro a la coleccion y lo retorna
 				if (ormRegCarrCab == null) {
 					json = "1";
 				} else {
@@ -96,14 +94,14 @@ public class RegCarrCabSOA {
 		}
 		return json;
 	}
-	
+
 	/**
-	 * Busca los alumnos por curso y los retorna como json.
-	 * Si el id del curso es nulo retorna 0, si no encuentra alumnos retorna 1
-	 * y si ocurre una excepcion retorna 2
+	 * Busca los registros por id de un caballo y los retorna como json. Si el id del caballo
+	 * es nulo retorna 0, si no encuentra registros retorna 1 y si ocurre una
+	 * excepcion retorna 2
 	 * 
 	 * @param idCaballo
-	 * @return
+	 * @return json
 	 */
 	public static String getByCaballo(int idCaballo) {
 		String json = null;
@@ -116,7 +114,7 @@ public class RegCarrCabSOA {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				Collection<RegCaballoSOAPVO> colectionCaballoSOAPVO = new ArrayList<RegCaballoSOAPVO>();
 				orm.Tap_regcaballo[] ormRegCaballos;
-				// Busca todos los alumnos en el curso
+				// Busca todos los registros
 				ormRegCaballos = lDAOFactory.getTap_regcaballoDAO()
 						.listTap_regcaballoByQuery(
 								"tap_caballocab_id='" + idCaballo + "'", null);
@@ -142,14 +140,14 @@ public class RegCarrCabSOA {
 		}
 		return json;
 	}
-	
+
 	/**
-	 * Busca los alumnos por curso y los retorna como json.
-	 * Si el id del curso es nulo retorna 0, si no encuentra alumnos retorna 1
-	 * y si ocurre una excepcion retorna 2
+	 * Busca los registros por id de una carrera y los retorna como json. Si el id de la carrera
+	 * es nulo retorna 0, si no encuentra registros retorna 1 y si ocurre una
+	 * excepcion retorna 2
 	 * 
 	 * @param idCarrera
-	 * @return
+	 * @return json
 	 */
 	public static String getByCarrera(int idCarrera) {
 		String json = null;
@@ -162,12 +160,12 @@ public class RegCarrCabSOA {
 				orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 				Collection<RegCaballoSOAPVO> colectionCarreraSOAPVO = new ArrayList<RegCaballoSOAPVO>();
 				orm.Tap_regcaballo[] ormRegCaballos;
-				// Busca todos los alumnos en el curso
+				// Busca todos los registros
 				ormRegCaballos = lDAOFactory.getTap_regcaballoDAO()
 						.listTap_regcaballoByQuery(
 								"tap_carreracar_id='" + idCarrera + "'", null);
-				// Si no se encuentran alumnos, devuelve un 1, de lo sontrario,
-				// agrega los alumnos a la coleccion y lo retorna
+				// Si no se encuentran registros, devuelve un 1, de lo sontrario,
+				// agrega los registros a la coleccion y lo retorna
 				if (ormRegCaballos.length == 0) {
 					json = "1";
 				} else {
@@ -188,7 +186,5 @@ public class RegCarrCabSOA {
 		}
 		return json;
 	}
-	
-	
-	
+
 }
