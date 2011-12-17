@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws" xmlns:intf="http://ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="add">
+    <complexType>
+     <sequence>
+      <element name="monto" type="xsd:int"/>
+      <element name="idCaballo" type="xsd:int"/>
+      <element name="idCarrera" type="xsd:int"/>
+      <element name="idCaja" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addResponse">
+    <complexType>
+     <sequence>
+      <element name="addReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAll">
+    <complexType/>
+   </element>
+   <element name="getAllResponse">
+    <complexType>
+     <sequence>
+      <element name="getAllReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="montoByCarrera">
+    <complexType>
+     <sequence>
+      <element name="idCarrera" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="montoByCarreraResponse">
+    <complexType>
+     <sequence>
+      <element name="montoByCarreraReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="montoByCaballo">
+    <complexType>
+     <sequence>
+      <element name="idCaballo" type="xsd:int"/>
+      <element name="idCarrera" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="montoByCaballoResponse">
+    <complexType>
+     <sequence>
+      <element name="montoByCaballoReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="montoAPagar">
+    <complexType>
+     <sequence>
+      <element name="idCarrera" type="xsd:int"/>
+      <element name="idCaballo" type="xsd:int"/>
+      <element name="monto" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="montoAPagarResponse">
+    <complexType>
+     <sequence>
+      <element name="montoAPagarReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="montoByCarreraResponse">
+
+      <wsdl:part element="impl:montoByCarreraResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="montoByCaballoRequest">
+
+      <wsdl:part element="impl:montoByCaballo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addRequest">
+
+      <wsdl:part element="impl:add" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="montoAPagarRequest">
+
+      <wsdl:part element="impl:montoAPagar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="montoByCaballoResponse">
+
+      <wsdl:part element="impl:montoByCaballoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllResponse">
+
+      <wsdl:part element="impl:getAllResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllRequest">
+
+      <wsdl:part element="impl:getAll" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="montoByCarreraRequest">
+
+      <wsdl:part element="impl:montoByCarrera" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addResponse">
+
+      <wsdl:part element="impl:addResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="montoAPagarResponse">
+
+      <wsdl:part element="impl:montoAPagarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ApuestaSOA">
+
+      <wsdl:operation name="add">
+
+         <wsdl:input message="impl:addRequest" name="addRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addResponse" name="addResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAll">
+
+         <wsdl:input message="impl:getAllRequest" name="getAllRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllResponse" name="getAllResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="montoByCarrera">
+
+         <wsdl:input message="impl:montoByCarreraRequest" name="montoByCarreraRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:montoByCarreraResponse" name="montoByCarreraResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="montoByCaballo">
+
+         <wsdl:input message="impl:montoByCaballoRequest" name="montoByCaballoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:montoByCaballoResponse" name="montoByCaballoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="montoAPagar">
+
+         <wsdl:input message="impl:montoAPagarRequest" name="montoAPagarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:montoAPagarResponse" name="montoAPagarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ApuestaSOASoapBinding" type="impl:ApuestaSOA">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="add">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="montoByCarrera">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="montoByCarreraRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="montoByCarreraResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="montoByCaballo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="montoByCaballoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="montoByCaballoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="montoAPagar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="montoAPagarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="montoAPagarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ApuestaSOAService">
+
+      <wsdl:port binding="impl:ApuestaSOASoapBinding" name="ApuestaSOA">
+
+         <wsdlsoap:address location="http://localhost:8080/ApuestaSOA/services/ApuestaSOA"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws" xmlns:intf="http://ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getAll">
+    <complexType/>
+   </element>
+   <element name="getAllResponse">
+    <complexType>
+     <sequence>
+      <element name="getAllReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getByCaballo">
+    <complexType>
+     <sequence>
+      <element name="idCaballo" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getByCaballoResponse">
+    <complexType>
+     <sequence>
+      <element name="getByCaballoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getById">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getByIdResponse">
+    <complexType>
+     <sequence>
+      <element name="getByIdReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getByCarrera">
+    <complexType>
+     <sequence>
+      <element name="idCarrera" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getByCarreraResponse">
+    <complexType>
+     <sequence>
+      <element name="getByCarreraReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getByIdResponse">
+
+      <wsdl:part element="impl:getByIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getByCaballoResponse">
+
+      <wsdl:part element="impl:getByCaballoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getByCarreraResponse">
+
+      <wsdl:part element="impl:getByCarreraResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getByIdRequest">
+
+      <wsdl:part element="impl:getById" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllResponse">
+
+      <wsdl:part element="impl:getAllResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllRequest">
+
+      <wsdl:part element="impl:getAll" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getByCarreraRequest">
+
+      <wsdl:part element="impl:getByCarrera" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getByCaballoRequest">
+
+      <wsdl:part element="impl:getByCaballo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="RegCaballoSOA">
+
+      <wsdl:operation name="getAll">
+
+         <wsdl:input message="impl:getAllRequest" name="getAllRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllResponse" name="getAllResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getByCaballo">
+
+         <wsdl:input message="impl:getByCaballoRequest" name="getByCaballoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getByCaballoResponse" name="getByCaballoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getById">
+
+         <wsdl:input message="impl:getByIdRequest" name="getByIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getByIdResponse" name="getByIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getByCarrera">
+
+         <wsdl:input message="impl:getByCarreraRequest" name="getByCarreraRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getByCarreraResponse" name="getByCarreraResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="RegCaballoSOASoapBinding" type="impl:RegCaballoSOA">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getAll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getByCaballo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getByCaballoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getByCaballoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getById">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getByIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getByIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getByCarrera">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getByCarreraRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getByCarreraResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="RegCaballoSOAService">
+
+      <wsdl:port binding="impl:RegCaballoSOASoapBinding" name="RegCaballoSOA">
+
+         <wsdlsoap:address location="http://localhost:8080/ApuestaSOA/services/RegCaballoSOA"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
