@@ -22,21 +22,79 @@
  <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
  <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
  <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
- <ns1:service name="LogSOA" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="add" qname="ns1:add" returnQName="ns1:addReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
-   <ns2:parameter qname="ns1:evento" type="xsd:string"/>
-   <ns2:parameter qname="ns1:fechaInicio" type="xsd:dateTime"/>
-   <ns2:parameter qname="ns1:fechaTermino" type="xsd:dateTime"/>
-  </ns2:operation>
-  <ns1:operation name="getAll" qname="ns2:getAll" returnQName="ns2:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  <ns1:parameter name="allowedMethods" value="getAll add"/>
+ <ns1:service name="CajaSOA" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="getAll" qname="ns1:getAll" returnQName="ns1:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
+  <ns1:operation name="getById" qname="ns2:getById" returnQName="ns2:getByIdReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:id" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getById getAll"/>
+  <ns1:parameter name="wsdlPortType" value="CajaSOA"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="wsdlPortType" value="LogSOA"/>
-  <ns1:parameter name="className" value="ws.LogSOA"/>
-  <ns1:parameter name="wsdlServicePort" value="LogSOA"/>
+  <ns1:parameter name="schemaQualified" value="http://ws"/>
+  <ns1:parameter name="wsdlServicePort" value="CajaSOA"/>
+  <ns1:parameter name="className" value="ws.CajaSOA"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws"/>
+  <ns1:parameter name="wsdlServiceElement" value="CajaSOAService"/>
+ </ns1:service>
+ <ns1:service name="JineteSOA" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getAll" qname="ns3:getAll" returnQName="ns3:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getById" qname="ns4:getById" returnQName="ns4:getByIdReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:id" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getById getAll"/>
+  <ns1:parameter name="wsdlPortType" value="JineteSOA"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://ws"/>
+  <ns1:parameter name="wsdlServicePort" value="JineteSOA"/>
+  <ns1:parameter name="className" value="ws.JineteSOA"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws"/>
+  <ns1:parameter name="wsdlServiceElement" value="JineteSOAService"/>
+ </ns1:service>
+ <ns1:service name="PistaSOA" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getAll" qname="ns5:getAll" returnQName="ns5:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getById" qname="ns6:getById" returnQName="ns6:getByIdReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:id" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getById getAll"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="PistaSOA"/>
+  <ns1:parameter name="className" value="ws.PistaSOA"/>
+  <ns1:parameter name="wsdlServicePort" value="PistaSOA"/>
   <ns1:parameter name="schemaQualified" value="http://ws"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://ws"/>
+  <ns1:parameter name="wsdlServiceElement" value="PistaSOAService"/>
+ </ns1:service>
+ <ns1:service name="CaballoSOA" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getAll" qname="ns7:getAll" returnQName="ns7:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getById" qname="ns8:getById" returnQName="ns8:getByIdReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:id" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getById getAll"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="CaballoSOA"/>
+  <ns1:parameter name="className" value="ws.CaballoSOA"/>
+  <ns1:parameter name="wsdlServicePort" value="CaballoSOA"/>
+  <ns1:parameter name="schemaQualified" value="http://ws"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws"/>
+  <ns1:parameter name="wsdlServiceElement" value="CaballoSOAService"/>
+ </ns1:service>
+ <ns1:service name="LogSOA" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="add" qname="ns9:add" returnQName="ns9:addReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:evento" type="xsd:string"/>
+   <ns1:parameter qname="ns9:fechaInicio" type="xsd:dateTime"/>
+   <ns1:parameter qname="ns9:fechaTermino" type="xsd:dateTime"/>
+  </ns1:operation>
+  <ns1:operation name="getAll" qname="ns10:getAll" returnQName="ns10:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
+  <ns1:parameter name="wsdlServicePort" value="LogSOA"/>
+  <ns1:parameter name="schemaQualified" value="http://ws"/>
+  <ns1:parameter name="className" value="ws.LogSOA"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="getAll add"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws"/>
   <ns1:parameter name="wsdlServiceElement" value="LogSOAService"/>
+  <ns1:parameter name="wsdlPortType" value="LogSOA"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
  </ns1:service>
  <ns1:service name="AdminService" provider="java:MSG">
   <ns1:parameter name="allowedMethods" value="AdminService"/>
@@ -45,57 +103,78 @@
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
  <ns1:service name="RegCaballoSOA" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="getAll" qname="ns3:getAll" returnQName="ns3:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  <ns1:operation name="getByCaballo" qname="ns4:getByCaballo" returnQName="ns4:getByCaballoReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns4:idCaballo" type="xsd:int"/>
+  <ns1:operation name="getAll" qname="ns11:getAll" returnQName="ns11:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getByCaballo" qname="ns12:getByCaballo" returnQName="ns12:getByCaballoReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:idCaballo" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="getById" qname="ns5:getById" returnQName="ns5:getByIdReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns5:id" type="xsd:int"/>
+  <ns1:operation name="getById" qname="ns13:getById" returnQName="ns13:getByIdReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:id" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="getByCarrera" qname="ns6:getByCarrera" returnQName="ns6:getByCarreraReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns6:idCarrera" type="xsd:int"/>
+  <ns1:operation name="getByCarrera" qname="ns14:getByCarrera" returnQName="ns14:getByCarreraReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:idCarrera" type="xsd:int"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="getByCarrera getByCaballo getById getAll"/>
-  <ns1:parameter name="wsdlPortType" value="RegCaballoSOA"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://ws"/>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
   <ns1:parameter name="wsdlServicePort" value="RegCaballoSOA"/>
+  <ns1:parameter name="schemaQualified" value="http://ws"/>
   <ns1:parameter name="className" value="ws.RegCaballoSOA"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="getByCarrera getByCaballo getById getAll"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://ws"/>
   <ns1:parameter name="wsdlServiceElement" value="RegCaballoSOAService"/>
+  <ns1:parameter name="wsdlPortType" value="RegCaballoSOA"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
  </ns1:service>
  <ns1:service name="ApuestaSOA" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="add" qname="ns7:add" returnQName="ns7:addReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns7:monto" type="xsd:int"/>
-   <ns1:parameter qname="ns7:idCaballo" type="xsd:int"/>
-   <ns1:parameter qname="ns7:idCarrera" type="xsd:int"/>
-   <ns1:parameter qname="ns7:idCaja" type="xsd:int"/>
+  <ns1:operation name="add" qname="ns15:add" returnQName="ns15:addReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:monto" type="xsd:int"/>
+   <ns1:parameter qname="ns15:idCaballo" type="xsd:int"/>
+   <ns1:parameter qname="ns15:idCarrera" type="xsd:int"/>
+   <ns1:parameter qname="ns15:idCaja" type="xsd:int"/>
+   <ns1:fault class="org.orm.PersistentException" qname="ns15:fault" type="ns16:PersistentException" xmlns:ns16="http://orm.org"/>
   </ns1:operation>
-  <ns1:operation name="getAll" qname="ns8:getAll" returnQName="ns8:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  <ns1:operation name="montoByCarrera" qname="ns9:montoByCarrera" returnQName="ns9:montoByCarreraReturn" returnType="xsd:int" soapAction="" xmlns:ns9="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns9:idCarrera" type="xsd:int"/>
+  <ns1:operation name="getAll" qname="ns17:getAll" returnQName="ns17:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns17="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="montoByCarrera" qname="ns18:montoByCarrera" returnQName="ns18:montoByCarreraReturn" returnType="xsd:int" soapAction="" xmlns:ns18="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:idCarrera" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="montoByCaballo" qname="ns10:montoByCaballo" returnQName="ns10:montoByCaballoReturn" returnType="xsd:int" soapAction="" xmlns:ns10="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns10:idCaballo" type="xsd:int"/>
-   <ns1:parameter qname="ns10:idCarrera" type="xsd:int"/>
+  <ns1:operation name="montoByCaballo" qname="ns19:montoByCaballo" returnQName="ns19:montoByCaballoReturn" returnType="xsd:int" soapAction="" xmlns:ns19="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns19:idCaballo" type="xsd:int"/>
+   <ns1:parameter qname="ns19:idCarrera" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="montoAPagar" qname="ns11:montoAPagar" returnQName="ns11:montoAPagarReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns11:idCarrera" type="xsd:int"/>
-   <ns1:parameter qname="ns11:idCaballo" type="xsd:int"/>
-   <ns1:parameter qname="ns11:monto" type="xsd:int"/>
+  <ns1:operation name="montoAPagar" qname="ns20:montoAPagar" returnQName="ns20:montoAPagarReturn" returnType="xsd:string" soapAction="" xmlns:ns20="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns20:idCarrera" type="xsd:int"/>
+   <ns1:parameter qname="ns20:idCaballo" type="xsd:int"/>
+   <ns1:parameter qname="ns20:monto" type="xsd:int"/>
+   <ns1:fault class="org.orm.PersistentException" qname="ns20:fault" type="ns21:PersistentException" xmlns:ns21="http://orm.org"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="montoAPagar getAll montoByCaballo montoByCarrera add"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="wsdlPortType" value="ApuestaSOA"/>
-  <ns1:parameter name="className" value="ws.ApuestaSOA"/>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
   <ns1:parameter name="wsdlServicePort" value="ApuestaSOA"/>
-  <ns1:parameter name="schemaQualified" value="http://ws"/>
+  <ns1:parameter name="schemaQualified" value="http://ws,http://orm.org"/>
+  <ns1:parameter name="className" value="ws.ApuestaSOA"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="montoAPagar getAll montoByCaballo montoByCarrera add"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://ws"/>
   <ns1:parameter name="wsdlServiceElement" value="ApuestaSOAService"/>
+  <ns1:parameter name="wsdlPortType" value="ApuestaSOA"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns22:PersistentException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.orm.PersistentException" xmlns:ns22="http://orm.org"/>
  </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="CarreraSOA" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getAll" qname="ns23:getAll" returnQName="ns23:getAllReturn" returnType="xsd:string" soapAction="" xmlns:ns23="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getById" qname="ns24:getById" returnQName="ns24:getByIdReturn" returnType="xsd:string" soapAction="" xmlns:ns24="http://ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns24:id" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getById getAll"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="CarreraSOA"/>
+  <ns1:parameter name="className" value="ws.CarreraSOA"/>
+  <ns1:parameter name="wsdlServicePort" value="CarreraSOA"/>
+  <ns1:parameter name="schemaQualified" value="http://ws"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws"/>
+  <ns1:parameter name="wsdlServiceElement" value="CarreraSOAService"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>
