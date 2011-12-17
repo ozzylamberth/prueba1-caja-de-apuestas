@@ -3,48 +3,22 @@
   <annotation name="ActionScriptGeneration">
     <item name="FullyQualifyReferences">true</item>
   </annotation>
-  <service name="RegCarrCabSOA">
+  <service name="RegCaballoSOA">
     <annotation name="ActionScriptGeneration">
-      <item name="WSDL-service">RegCarrCabSOAService</item>
+      <item name="WSDL-service">RegCaballoSOAService</item>
       <item name="ServiceType">WebService</item>
-      <item name="WSDL">http://localhost:8080/ApuestaSOA/services/RegCarrCabSOA?wsdl</item>
-      <item name="Package">services.regcarrcabsoa</item>
-      <item name="WSDL-port">RegCarrCabSOA</item>
+      <item name="WSDL">http://localhost:8080/ApuestaSOA/services/RegCaballoSOA?wsdl</item>
+      <item name="Package">services.regcaballosoa</item>
+      <item name="WSDL-port">RegCaballoSOA</item>
     </annotation>
     <annotation name="ServiceTypeGroup">
       <item name="ServiceBackendType">WebService</item>
     </annotation>
     <annotation name="ServiceConfig">
       <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
-      <item name="WSDL-endpoint">http://localhost:8080/ApuestaSOA/services/RegCarrCabSOA</item>
+      <item name="WSDL-endpoint">http://localhost:8080/ApuestaSOA/services/RegCaballoSOA</item>
       <item name="LINKED_FILE"></item>
     </annotation>
-    <function name="getAll" return-type="string">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="WSDLName">
-        <item name="SOAPAction"></item>
-        <item name="getAll">http://ws,getAll</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">string</item>
-      </annotation>
-    </function>
-    <function name="getByCaballo" return-type="string">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="WSDLName">
-        <item name="getByCaballo">http://ws,getByCaballo</item>
-        <item name="SOAPAction"></item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParams">integer</item>
-        <item name="returnType">string</item>
-      </annotation>
-      <parameter name="idCaballo" type="integer"/>
-    </function>
     <function name="getById" return-type="string">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
@@ -73,6 +47,32 @@
       </annotation>
       <parameter name="idCarrera" type="integer"/>
     </function>
+    <function name="getAll" return-type="string">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="WSDLName">
+        <item name="SOAPAction"></item>
+        <item name="getAll">http://ws,getAll</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">string</item>
+      </annotation>
+    </function>
+    <function name="getByCaballo" return-type="string">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="WSDLName">
+        <item name="getByCaballo">http://ws,getByCaballo</item>
+        <item name="SOAPAction"></item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">integer</item>
+        <item name="returnType">string</item>
+      </annotation>
+      <parameter name="idCaballo" type="integer"/>
+    </function>
   </service>
   <service name="ApuestaSOA">
     <annotation name="ActionScriptGeneration">
@@ -90,6 +90,23 @@
       <item name="WSDL-endpoint">http://localhost:8080/ApuestaSOA/services/ApuestaSOA</item>
       <item name="LINKED_FILE"></item>
     </annotation>
+    <function name="add" return-type="string">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="WSDLName">
+        <item name="SOAPAction"></item>
+        <item name="add">http://ws,add</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">integer,integer,integer,integer</item>
+        <item name="returnType">string</item>
+      </annotation>
+      <parameter name="monto" type="integer"/>
+      <parameter name="idCaballo" type="integer"/>
+      <parameter name="idCarrera" type="integer"/>
+      <parameter name="idCaja" type="integer"/>
+    </function>
     <function name="montoAPagar" return-type="string">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
@@ -121,6 +138,18 @@
       <parameter name="idCaballo" type="integer"/>
       <parameter name="idCarrera" type="integer"/>
     </function>
+    <function name="getAll" return-type="string">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="WSDLName">
+        <item name="SOAPAction"></item>
+        <item name="getAll">http://ws,getAll</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">string</item>
+      </annotation>
+    </function>
     <function name="montoByCarrera" return-type="integer">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
@@ -134,35 +163,6 @@
         <item name="returnType">integer</item>
       </annotation>
       <parameter name="idCarrera" type="integer"/>
-    </function>
-    <function name="add" return-type="string">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="WSDLName">
-        <item name="SOAPAction"></item>
-        <item name="add">http://ws,add</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParams">integer,integer,integer,integer</item>
-        <item name="returnType">string</item>
-      </annotation>
-      <parameter name="monto" type="integer"/>
-      <parameter name="idCaballo" type="integer"/>
-      <parameter name="idCarrera" type="integer"/>
-      <parameter name="idCaja" type="integer"/>
-    </function>
-    <function name="getAll" return-type="string">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="WSDLName">
-        <item name="SOAPAction"></item>
-        <item name="getAll">http://ws,getAll</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">string</item>
-      </annotation>
     </function>
   </service>
 </model>

@@ -24,6 +24,10 @@ internal class _Super_ApuestaSOA extends com.adobe.fiber.services.wrapper.WebSer
         var operations:Object = new Object();
         var operation:mx.rpc.soap.mxml.Operation;
 
+        operation = new mx.rpc.soap.mxml.Operation(null, "add");
+         operation.resultType = String;
+        operations["add"] = operation;
+
         operation = new mx.rpc.soap.mxml.Operation(null, "montoAPagar");
          operation.resultType = String;
         operations["montoAPagar"] = operation;
@@ -32,17 +36,13 @@ internal class _Super_ApuestaSOA extends com.adobe.fiber.services.wrapper.WebSer
          operation.resultType = int;
         operations["montoByCaballo"] = operation;
 
-        operation = new mx.rpc.soap.mxml.Operation(null, "montoByCarrera");
-         operation.resultType = int;
-        operations["montoByCarrera"] = operation;
-
-        operation = new mx.rpc.soap.mxml.Operation(null, "add");
-         operation.resultType = String;
-        operations["add"] = operation;
-
         operation = new mx.rpc.soap.mxml.Operation(null, "getAll");
          operation.resultType = String;
         operations["getAll"] = operation;
+
+        operation = new mx.rpc.soap.mxml.Operation(null, "montoByCarrera");
+         operation.resultType = int;
+        operations["montoByCarrera"] = operation;
 
         _serviceControl.operations = operations;
         try
@@ -69,6 +69,25 @@ internal class _Super_ApuestaSOA extends com.adobe.fiber.services.wrapper.WebSer
     }
     
 
+    /**
+      * This method is a generated wrapper used to call the 'add' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function add(monto:int, idCaballo:int, idCarrera:int, idCaja:int) : mx.rpc.AsyncToken
+    {
+        model_internal::loadWSDLIfNecessary();
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("add");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(monto,idCaballo,idCarrera,idCaja) ;
+        return _internal_token;
+    }
+     
     /**
       * This method is a generated wrapper used to call the 'montoAPagar' operation. It returns an mx.rpc.AsyncToken whose 
       * result property will be populated with the result of the operation when the server response is received. 
@@ -108,44 +127,6 @@ internal class _Super_ApuestaSOA extends com.adobe.fiber.services.wrapper.WebSer
     }
      
     /**
-      * This method is a generated wrapper used to call the 'montoByCarrera' operation. It returns an mx.rpc.AsyncToken whose 
-      * result property will be populated with the result of the operation when the server response is received. 
-      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
-      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
-      *
-      * @see mx.rpc.AsyncToken
-      * @see mx.rpc.CallResponder 
-      *
-      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
-      */
-    public function montoByCarrera(idCarrera:int) : mx.rpc.AsyncToken
-    {
-        model_internal::loadWSDLIfNecessary();
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("montoByCarrera");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(idCarrera) ;
-        return _internal_token;
-    }
-     
-    /**
-      * This method is a generated wrapper used to call the 'add' operation. It returns an mx.rpc.AsyncToken whose 
-      * result property will be populated with the result of the operation when the server response is received. 
-      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
-      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
-      *
-      * @see mx.rpc.AsyncToken
-      * @see mx.rpc.CallResponder 
-      *
-      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
-      */
-    public function add(monto:int, idCaballo:int, idCarrera:int, idCaja:int) : mx.rpc.AsyncToken
-    {
-        model_internal::loadWSDLIfNecessary();
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("add");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(monto,idCaballo,idCarrera,idCaja) ;
-        return _internal_token;
-    }
-     
-    /**
       * This method is a generated wrapper used to call the 'getAll' operation. It returns an mx.rpc.AsyncToken whose 
       * result property will be populated with the result of the operation when the server response is received. 
       * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
@@ -161,6 +142,25 @@ internal class _Super_ApuestaSOA extends com.adobe.fiber.services.wrapper.WebSer
         model_internal::loadWSDLIfNecessary();
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("getAll");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'montoByCarrera' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function montoByCarrera(idCarrera:int) : mx.rpc.AsyncToken
+    {
+        model_internal::loadWSDLIfNecessary();
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("montoByCarrera");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(idCarrera) ;
         return _internal_token;
     }
      
