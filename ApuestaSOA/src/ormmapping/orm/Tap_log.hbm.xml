@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="orm.Tap_log" table="tap_log" lazy="false">
+		<meta attribute="class-description">
+			log de los eventos del web services
+		</meta>
+		<id name="log_id" column="log_id" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="log_evento" column="log_evento" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Campo que alamcena el evento del log
+			</meta>
+		</property>
+		<property name="log_fechainicio" column="log_fechainicio" type="date" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				campo que almacena la fecha de inicio del evento
+			</meta>
+		</property>
+		<property name="log_fechatermino" column="log_fechatermino" type="date" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				campo que almacena la fecha de termino del evento
+			</meta>
+		</property>
+		<property name="log_tiempo" column="log_tiempo" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Campo que almacena el tiempo de duracion del evento
+			</meta>
+		</property>
+	</class>
+</hibernate-mapping>

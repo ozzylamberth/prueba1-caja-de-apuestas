@@ -6,6 +6,9 @@ License Type: Purchased
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="orm.Tap_pista" table="tap_pista" lazy="false">
+		<meta attribute="class-description">
+			Tabla que almacena los registros de las pistas.
+		</meta>
 		<id name="pis_id" column="pis_id" type="integer" unsaved-value="0">
 			<generator class="increment">
 			</generator>
