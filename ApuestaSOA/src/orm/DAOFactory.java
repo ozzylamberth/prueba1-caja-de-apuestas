@@ -29,5 +29,6 @@ public abstract class DAOFactory {
 	public abstract Tap_carreraDAO getTap_carreraDAO();
 	public abstract Tap_regcaballoDAO getTap_regcaballoDAO();
 	public abstract Tap_apuestaDAO getTap_apuestaDAO();
+	public abstract Tap_logDAO getTap_logDAO();
 }
 
