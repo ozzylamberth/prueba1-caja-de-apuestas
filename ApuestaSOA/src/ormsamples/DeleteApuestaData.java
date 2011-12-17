@@ -38,6 +38,10 @@ public class DeleteApuestaData {
 			orm.Tap_apuesta oRMTap_apuesta = oRMTap_apuestaDAO.loadTap_apuestaByQuery(null, null);
 			// Delete the persistent object
 			oRMTap_apuestaDAO.delete(oRMTap_apuesta);
+			orm.dao.Tap_logDAO oRMTap_logDAO = lDAOFactory.getTap_logDAO();
+			orm.Tap_log oRMTap_log = oRMTap_logDAO.loadTap_logByQuery(null, null);
+			// Delete the persistent object
+			oRMTap_logDAO.delete(oRMTap_log);
 			t.commit();
 		}
 		catch (Exception e) {
