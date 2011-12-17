@@ -2,6 +2,7 @@ package ws;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.print.DocFlavor.READER;
 
@@ -16,13 +17,12 @@ public class RegCaballoSOA {
 
 	/**
 	 * Busca todos los registros de las carreras de los caballos y los retorna como json. 
-	 * Si no encuentra registros retorna 1.
-	 * si ocurre una excepcion retorna 2
 	 * 
-	 * @return json
+	 * @return json con todos los registros de caballos.  Si no encuentra registros retorna 1.
+	 * si ocurre una excepcion retorna 2
 	 */
 	public static String getAll() {
-
+		Date fechaInicio = new Date();
 		String json = null;
 		orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 		Collection<RegCaballoSOAPVO> coleccionRegCaballoSOAPVO = new ArrayList<RegCaballoSOAPVO>();
@@ -47,19 +47,23 @@ public class RegCaballoSOA {
 			e.printStackTrace();
 			json = "2";
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Todos los reg de caballos", fechaInicio, fechaTermino);
 		return json;
 	}
 
 	/**
 	 * Busca un registro de una carrera de un caballo  por id y lo retorna como json. 
-	 * Si el id es nulo retorna 0,
-	 * si no encuentra el curso retorna 1 y si ocurre una excepcion retorna 2
 	 * 
 	 * @param id
-	 * @return json
+	 * @return json con el registro de caballo. Si el id es nulo retorna 0,
+	 * si no encuentra el curso retorna 1 y si ocurre una excepcion retorna 2
 	 */
 
 	public static String getById(int id) {
+		Date fechaInicio = new Date();
 		String json = null;
 		// Comprueba si la variable ingresada es nula
 		if (id == 0) {
@@ -92,18 +96,23 @@ public class RegCaballoSOA {
 				json = "2";
 			}
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Registro de caballo por id", fechaInicio, fechaTermino);
 		return json;
 	}
 
 	/**
-	 * Busca los registros por id de un caballo y los retorna como json. Si el id del caballo
-	 * es nulo retorna 0, si no encuentra registros retorna 1 y si ocurre una
-	 * excepcion retorna 2
+	 * Busca los registros por id de un caballo y los retorna como json. 
 	 * 
 	 * @param idCaballo
-	 * @return json
+	 * @return json con los registros por caballo. Si el id del caballo
+	 * es nulo retorna 0, si no encuentra registros retorna 1 y si ocurre una
+	 * excepcion retorna 2
 	 */
 	public static String getByCaballo(int idCaballo) {
+		Date fechaInicio = new Date();
 		String json = null;
 		// Comprueba si la variable ingresada es nula
 		if (idCaballo == 0) {
@@ -138,18 +147,23 @@ public class RegCaballoSOA {
 				json = "2";
 			}
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Registro por caballo", fechaInicio, fechaTermino);
 		return json;
 	}
 
 	/**
-	 * Busca los registros por id de una carrera y los retorna como json. Si el id de la carrera
-	 * es nulo retorna 0, si no encuentra registros retorna 1 y si ocurre una
-	 * excepcion retorna 2
+	 * Busca los registros por id de una carrera y los retorna como json. 
 	 * 
 	 * @param idCarrera
-	 * @return json
+	 * @return json con los registros por carrera. Si el id de la carrera
+	 * es nulo retorna 0, si no encuentra registros retorna 1 y si ocurre una
+	 * excepcion retorna 2
 	 */
 	public static String getByCarrera(int idCarrera) {
+		Date fechaInicio = new Date();
 		String json = null;
 		// Comprueba si la variable ingresada es nula
 		if (idCarrera == 0) {
@@ -184,6 +198,10 @@ public class RegCaballoSOA {
 				json = "2";
 			}
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Registro por carrera", fechaInicio, fechaTermino);
 		return json;
 	}
 

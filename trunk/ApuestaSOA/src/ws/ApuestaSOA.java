@@ -18,17 +18,17 @@ import orm.Tap_regcaballo;
 public class ApuestaSOA {
 
 	/**
-	 * Ingresa una nueva apuesta a los registros Si alguna variable es nula
-	 * retorna 0, si algun registro no es encontrado retorna 1, si ocurre una
-	 * excepcion retorna 2 y si es exitoso reorna 3
+	 * Ingresa una nueva apuesta a los registros 
 	 * 
 	 * @param monto
 	 * @param idCaballo
 	 * @param idCarrera
 	 * @param idCaja
-	 * @return respuesta
+	 * @return respuesta. Si alguna variable es nula
+	 * retorna 0, si ocurre una excepcion retorna 2 y si es exitoso reorna 3
 	 */
-	public String add(int monto, int idCaballo, int idCarrera, int idCaja) {
+	public String add(int monto, int idCaballo, int idCarrera, int idCaja) throws PersistentException {
+		Date fechaInicio = new Date();
 		String resultado = "";
 		PersistentTransaction t;
 		// valida que los campos no vengan vacios.
@@ -101,7 +101,11 @@ public class ApuestaSOA {
 				e1.printStackTrace();
 			}
 		}
-		return resultado;
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Ingresar apuesta", fechaInicio, fechaTermino);
+		return resultado; 
 	}
 
 	/**
@@ -111,25 +115,38 @@ public class ApuestaSOA {
 	 * @param idCarrera
 	 * @param idCaballo
 	 * @param monto
-	 * @return montoAPagar
+	 * @return resultado del monto a pagar. Si lo datos ingresados son nulos retorna -1,
 	 */
-	public String montoAPagar(int idCarrera, int idCaballo, int monto) {
+	public String montoAPagar(int idCarrera, int idCaballo, int monto) throws PersistentException {
+		Date fechaInicio = new Date();
+		String resultado = "";
+		if ((idCarrera > 0) || (idCaballo > 0) || (monto > 0)){
 		float montoAPagar = 0;
 		float porciento = (float) 1 / 10;
-		float totalCarrera = this.montoByCarrera(idCarrera);
-		float totalCaballo = this.montoByCaballo(idCaballo, idCarrera);
+		float totalCarrera = this.montoByCarrera(idCarrera) + monto;
+		float totalCaballo = this.montoByCaballo(idCaballo, idCarrera) + monto;
 		montoAPagar = ((totalCarrera - totalCarrera * porciento) / totalCaballo)
 				* monto;
-		return String.valueOf(montoAPagar);
+		resultado = String.valueOf(montoAPagar);
+		}else{
+			resultado = "-1";
+		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Monto a pagar", fechaInicio, fechaTermino);
+		return resultado;
 	}
 
 	/**
 	 * Obtiene el monto total apostado por una carrera
-	 * Si no encuentra registros retorna un -2
+	 * 
 	 * @param idCarrera
-	 * @return monto
+	 * @return monto. Si los datos ingresados son nulos retorna -1,
+	 * si no encuentra registros retorna un -2
 	 */
 	public int montoByCarrera(int idCarrera) {
+		Date fechaInicio = new Date();
 		int monto = 0;
 		int[] ids;
 		if ((idCarrera > 0)) {
@@ -173,18 +190,26 @@ public class ApuestaSOA {
 				// Retorna 2 indicando excepcion
 				monto = -2;
 			}
+		}else{
+			monto = -1;
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Monto por carrera", fechaInicio, fechaTermino);
 		return monto;
 	}
 
 	/**
 	 * Obtiene el monto por los caballos
-	 * Si no obtiene registros retorna un -2
+	 * 
 	 * @param idCaballo
 	 * @param idCarrera
-	 * @return monto
+	 * @return monto. si los datos ingresado son nulos retorna -1,
+	 * si no obtiene registros retorna un -2
 	 */
 	public int montoByCaballo(int idCaballo, int idCarrera) {
+		Date fechaInicio = new Date();
 		int id = 0;
 		int monto = 0;
 		if ((idCaballo > 0) && (idCarrera > 0)) {
@@ -225,17 +250,24 @@ public class ApuestaSOA {
 				// Retorna 2 indicando excepcion
 				monto = -2;
 			}
+		}else{
+			monto = -1;
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Monto por caballo", fechaInicio, fechaTermino);
 		return monto;
 	}
 
 	/**
-	 * Busca todos las apuestas y los retorna como json. Si no encuentra apuestas
-	 * retorna 1 y si ocurre una excepcion retorna 2
+	 * Busca todos las apuestas y los retorna como json. 
 	 * 
-	 * @return json
+	 * @return json con las apuestas. Si no encuentra apuestas
+	 * retorna 1 y si ocurre una excepcion retorna 2
 	 */
 	public static String getAll() {
+		Date fechaInicio = new Date();
 		String json = null;
 		orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 		Collection<ApuestaSOAPVO> coleccionApuestaSOAPVO = new ArrayList<ApuestaSOAPVO>();
@@ -260,6 +292,10 @@ public class ApuestaSOA {
 			e.printStackTrace();
 			json = "2";
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Todas las apuestas", fechaInicio, fechaTermino);
 		return json;
 	}
 

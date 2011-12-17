@@ -2,6 +2,7 @@ package ws;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.orm.PersistentException;
 
@@ -13,13 +14,12 @@ public class JineteSOA {
 	
 	/**
 	 * Busca todos los jinetes y los retorna como json.
-	 * Si no encuentra jinetes retorna 1
-	 * y si ocurre una excepcion retorna 2
 	 * 
-	 * @return json
+	 * @return json con los jinetes.  Si no encuentra jinetes retorna 1
+	 * y si ocurre una excepcion retorna 2
 	 */
 	public static String getAll() {
-
+		Date fechaInicio = new Date();
 		String json = null;
 		orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 		Collection<JineteSOAPVO> coleccionJineteSOAPVO = new ArrayList<JineteSOAPVO>();
@@ -44,19 +44,23 @@ public class JineteSOA {
 			e.printStackTrace();
 			json = "2";
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Todas los jinetes", fechaInicio, fechaTermino);
 		return json;
 	}
 	
 	/**
 	 * Busca un jinete por id y lo retorna como json.
-	 * Si el id es nulo retorna 0, si no encuentra el curso retorna 1
-	 * y si ocurre una excepcion retorna 2
 	 * 
 	 * @param id
-	 * @return json
+	 * @return json con el jinete. Si el id es nulo retorna 0, si no encuentra el curso retorna 1
+	 * y si ocurre una excepcion retorna 2
 	 */
 	
 	public static String getById(int id) {
+		Date fechaInicio = new Date();
 		String json = null;
 		// Comprueba si la variable ingresada es nula
 		if (id == 0) {
@@ -88,6 +92,10 @@ public class JineteSOA {
 				json = "2";
 			}
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Jinete por id", fechaInicio, fechaTermino);
 		return json;
 	}
 	
