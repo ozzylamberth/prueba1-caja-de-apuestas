@@ -4,6 +4,7 @@
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
 			   xmlns:regcaballosoa="services.regcaballosoa.*"
 			   xmlns:apuestasoa="services.apuestasoa.*"
+			   xmlns:logsoa="services.logsoa.*"
 			   minWidth="955" minHeight="600">
 	<fx:Script>
 		<![CDATA[
@@ -18,10 +19,13 @@
 			import spark.events.IndexChangeEvent;
 			import spark.events.TextOperationEvent;
 			
-			public var mon:int = 0;
+			import validar.Validacion;
+			
+			public var monto:int = 0;
 			public var caballo:ArrayCollection = new ArrayCollection;
 			public var caballoSeleccionado:ArrayCollection = new ArrayCollection;
-			public var id_carrera = 0;
+			public var id_carrera:int = 0;
+			public var caja:int = 1;
 			
 			/**
 			 * Muestra los caballos por carreras
@@ -40,11 +44,13 @@
 				}else {
 					id_carrera = 5;
 				}
-				getByCarreraResult.token = regCaballoSOA.getByCarrera(/*Enter value(s) for */ id_carrera);
-				var rawData:String = getByCarreraResult.lastResult;
-				var arrayDecode:Array = (JSON.decode(rawData) as Array);
-				this.caballo = new ArrayCollection(arrayDecode);
-				mostrarCaballos.dataProvider = caballo;
+				if (id_carrera>0){
+					getByCarreraResult.token = regCaballoSOA.getByCarrera(/*Enter value(s) for */ id_carrera);
+					var rawData:String = getByCarreraResult.lastResult;
+					var arrayDecode:Array = (JSON.decode(rawData) as Array);
+					this.caballo = new ArrayCollection(arrayDecode);
+					mostrarCaballos.dataProvider = caballo;
+				}
 			}
 			
 			/**
@@ -52,10 +58,17 @@
 			 */
 			protected function apostar_clickHandler(event:MouseEvent):void
 			{
-				//var index:int = mostrarCaballos.selectedIndex;
-				caballoSeleccionado.addItem(mostrarCaballos.selectedItem);
-				//getByCarreraResult.token = regCarrCabSOA.getByCarrera(/*Enter value(s) for */ idCarrera);
-				addResult.token = apuestaSOA.add(/*Enter value(s) for */ mon, caballoSeleccionado.getItemAt(0).idCaballo, id_carrera, 1);
+				var valida:Validacion = new Validacion();
+				var respuesta:Boolean = valida.validaApuesta(monto, caballoSeleccionado, id_carrera, caja);
+				if (respuesta == true){
+					addResult.token = apuestaSOA.add(/*Enter value(s) for */ monto, caballoSeleccionado.getItemAt(0).idCaballo, id_carrera, caja);
+					Alert.show("Apuesta Ingresada correctamente");
+					montoInput.text = "";
+					monto = 0;
+					valor.text = "Valor"
+				}else{
+					Alert.show("Debe ingresar todos los datos, \nporfavor verifiquelos");
+				}
 			}
 
 			/**
@@ -66,8 +79,8 @@
 				getAllResult.token = apuestaSOA.getAll();
 				var rawData:String = getAllResult.lastResult;
 				var arrayDecode:Array = (JSON.decode(rawData) as Array);
-				var mostrarAlByCurso:ArrayCollection = new ArrayCollection(arrayDecode);
-				mostrarApuestas.dataProvider = mostrarAlByCurso;
+				var collectApuestas:ArrayCollection = new ArrayCollection(arrayDecode);
+				mostrarApuestas.dataProvider = collectApuestas;
 			}
 			
 			/**
@@ -76,7 +89,15 @@
 			protected function monto_changeHandler(event:TextOperationEvent):void
 			{
 				// TODO Auto-generated method stub
-				this.mon = parseInt(monto.text);
+				var valida:Validacion = new Validacion();
+				var retornoMonto:String = valida.validaMonto(montoInput.text);
+				if(retornoMonto == null){
+					error.text = "";
+					this.monto = parseInt(montoInput.text);
+				}else{
+					error.text = retornoMonto;
+					this.monto = 0;
+				}
 			}
 			
 			/**
@@ -94,13 +115,30 @@
 			 */
 			protected function estimar_clickHandler(event:MouseEvent):void
 			{
-				
-				caballoSeleccionado.addItem(mostrarCaballos.selectedItem);
-				montoAPagarResult.token = apuestaSOA.montoAPagar(/*Enter value(s) for */ id_carrera, caballoSeleccionado.getItemAt(0).idCaballo, mon);
-				var rawData:String = montoAPagarResult.lastResult;
-				if (rawData != null){
-					valor.text = "$ " + rawData;
+				var valida:Validacion = new Validacion();
+				var respuesta:Boolean = valida.validaEstimacion(id_carrera, caballoSeleccionado, monto);
+				if (respuesta == true){
+					montoAPagarResult.token = apuestaSOA.montoAPagar(/*Enter value(s) for */ id_carrera, caballoSeleccionado.getItemAt(0).idCaballo, monto);
+					var rawData:String = montoAPagarResult.lastResult;
+					if (rawData != null){
+						valor.text = "$ " + rawData;
+						montoInput.text = "";
+						monto = 0;
+					}
+				}else{
+					Alert.show("Debe ingresar todos los datos, \nporfavor verifiquelos");
 				}
+			}
+			
+			
+			protected function actLog_clickHandler(event:MouseEvent):void
+			{
+				getAllResult2.token = logSOA.getAll();
+				var rawData:String = getAllResult2.lastResult;
+				var arrayDecode:Array = (JSON.decode(rawData) as Array);
+				arrayDecode.reverse();
+				var collectLog:ArrayCollection = new ArrayCollection(arrayDecode);
+				mostrarLog.dataProvider = collectLog;
 			}
 			
 		]]>
@@ -116,6 +154,10 @@
 							   showBusyCursor="true"/>
 		<s:CallResponder id="addResult"/>
 		<s:CallResponder id="montoAPagarResult"/>
+		<s:CallResponder id="getAllResult2"/>
+		<logsoa:LogSOA id="logSOA"
+					   fault="Alert.show(event.fault.faultString + '\n' + event.fault.faultDetail)"
+					   showBusyCursor="true"/>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:BorderContainer x="28" y="37" width="893" height="534" backgroundColor="#6286E1">
@@ -141,8 +183,8 @@
 				  click="estimar_clickHandler(event)"/>
 		<s:Button id="apostar" x="193" y="387" width="92" height="31" label="Apostar"
 				  click="apostar_clickHandler(event)"/>
-		<s:TextInput id="monto" x="157" y="348" change="monto_changeHandler(event)"/>
-		<s:Label x="74" y="354" fontSize="16" fontWeight="bold" text="Monto"/>
+		<s:TextInput id="montoInput" x="157" y="348" change="monto_changeHandler(event)"/>
+		<s:Label x="74" y="354" fontSize="16" fontWeight="bold" text="Monto:  $"/>
 		<mx:DataGrid id="mostrarApuestas" x="401" y="132" width="453" height="192" editable="false">
 			<mx:columns>
 				<mx:DataGridColumn dataField="fecha" headerText="Fecha"/>
@@ -154,20 +196,23 @@
 		<s:Button id="actApuesta" x="592" y="73" width="94" height="33" label="Actualizar"
 				  click="actApuesta_clickHandler(event)"/>
 		<mx:VRule x="348" y="24" width="11" height="481"/>
-		<s:Label id="valor" x="105" y="452" width="170" height="30" fontSize="20" fontWeight="bold"
-				 text="Valor"/>
-		<mx:DataGrid id="mostrarApuestas0" x="401" y="389" width="453" height="93" color="#000000"
+		<s:Label id="valor" x="44" y="434" width="261" height="29" fontSize="24" fontWeight="bold"
+				 text="Valor" textAlign="center"/>
+		<mx:DataGrid id="mostrarLog" x="401" y="389" width="453" height="93"
 					 editable="false" fontSize="12">
 			<mx:columns>
-				<mx:DataGridColumn color="#000000" dataField="fecha" headerText="Fecha"/>
-				<mx:DataGridColumn dataField="monto" headerText="Apuesta"/>
-				<mx:DataGridColumn dataField="numeroCarrera" headerText="Carrera"/>
-				<mx:DataGridColumn dataField="nombreCaballo" headerText="Caballo"/>
+				<mx:DataGridColumn width="50" dataField="id" headerText="Nro"/>
+				<mx:DataGridColumn width="150" dataField="evento" headerText="Evento"/>
+				<mx:DataGridColumn dataField="tiempo" headerText="Tiempo(ms)"/>
+				<mx:DataGridColumn dataField="fechaInicio" headerText="Inicio"/>
+				<mx:DataGridColumn dataField="fechaTermino" headerText="Termino"/>
 			</mx:columns>
 		</mx:DataGrid>
 		<s:Label x="542" y="31" fontSize="22" fontWeight="bold" text="Mostrar Apuestas"/>
 		<mx:HRule x="366" y="344" width="514" height="10"/>
 		<s:Label x="608" y="362" fontSize="20" fontWeight="bold" text="Log"/>
-		<s:Button id="actLog" x="570" y="491" width="133" label="Actuallizar"/>
+		<s:Button id="actLog" x="570" y="491" width="133" label="Actuallizar"
+				  click="actLog_clickHandler(event)"/>
+		<s:Label id="error" x="44" y="470" width="261" height="52" color="#FF0202"/>
 	</s:BorderContainer>
 </s:Application>
