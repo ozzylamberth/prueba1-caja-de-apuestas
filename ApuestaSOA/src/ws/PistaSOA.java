@@ -2,6 +2,7 @@ package ws;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.orm.PersistentException;
 
@@ -14,13 +15,12 @@ public class PistaSOA {
 	
 	/**
 	 * Busca todos las pistas y las retorna como json.
-	 * Si no encuentra pistas retorna 1
+	 *
+	 * @return json con todas las pistas.  Si no encuentra pistas retorna 1
 	 * y si ocurre una excepcion retorna 2
-	 * 
-	 * @return json
 	 */
 	public static String getAll() {
-
+		Date fechaInicio = new Date();
 		String json = null;
 		orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 		Collection<PistaSOAPVO> coleccionPistaSOAPVO = new ArrayList<PistaSOAPVO>();
@@ -45,19 +45,24 @@ public class PistaSOA {
 			e.printStackTrace();
 			json = "2";
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Todas las pistas", fechaInicio, fechaTermino);
 		return json;
 	}
 	
 	/**
 	 * Busca una pista por id y lo retorna como json.
-	 * Si el id es nulo retorna 0, si no encuentra el curso retorna 1
-	 * y si ocurre una excepcion retorna 2
 	 * 
 	 * @param id
-	 * @return json
+	 * @return json con la pista por id.  Si el id es nulo retorna 0, 
+	 * si no encuentra la pista retorna 1
+	 * y si ocurre una excepcion retorna 2
 	 */
 	
 	public static String getById(int id) {
+		Date fechaInicio = new Date();
 		String json = null;
 		// Comprueba si la variable ingresada es nula
 		if (id == 0) {
@@ -89,6 +94,10 @@ public class PistaSOA {
 				json = "2";
 			}
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Pista por id", fechaInicio, fechaTermino);
 		return json;
 	}
 	

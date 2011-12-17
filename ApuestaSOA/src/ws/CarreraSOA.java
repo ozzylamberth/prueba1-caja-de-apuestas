@@ -2,6 +2,7 @@ package ws;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.orm.PersistentException;
 
@@ -13,12 +14,12 @@ public class CarreraSOA {
 
 	/**
 	 * Busca todos las carreras y las retorna como json.
-	 * Si no encuentra carreras retorna 1
-	 * y si ocurre una excepcion retorna 2
 	 * 
-	 * @return json
+	 * @return json con las carreras. Si no encuentra carreras retorna 1
+	 * y si ocurre una excepcion retorna 2
 	 */
 	public static String getAll() {
+		Date fechaInicio = new Date();
 		String json = null;
 		orm.DAOFactory lDAOFactory = orm.DAOFactory.getDAOFactory();
 		Collection<CarreraSOAPVO> coleccionCarreraSOAPVO = new ArrayList<CarreraSOAPVO>();
@@ -43,19 +44,23 @@ public class CarreraSOA {
 			e.printStackTrace();
 			json = "2";
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Todas las carreras", fechaInicio, fechaTermino);
 		return json;
 	}
 	
 	/**
 	 * Busca una carrera por id y la retorna como json.
-	 * Si el id es nulo retorna 0, si no encuentra el curso retorna 1
-	 * y si ocurre una excepcion retorna 2
 	 * 
 	 * @param id
-	 * @return json
+	 * @return json con la carrera. Si el id es nulo retorna 0, si no encuentra el curso retorna 1
+	 * y si ocurre una excepcion retorna 2
 	 */
 	
 	public static String getById(int id) {
+		Date fechaInicio = new Date();
 		String json = null;
 		// Comprueba si la variable ingresada es nula
 		if (id == 0) {
@@ -87,6 +92,10 @@ public class CarreraSOA {
 				json = "2";
 			}
 		}
+		//log
+		LogSOA log = new LogSOA();
+		Date fechaTermino = new Date();
+		log.add("Carrera por id", fechaInicio, fechaTermino);
 		return json;
 	}
 	
