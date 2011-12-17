@@ -13,7 +13,7 @@ public class LogSOAPVO {
 	/**
 	 * Crea un nuevo log
 	 * @param logOrm
-	 * @return caballo
+	 * @return log
 	 */
 	
 	public static LogSOAPVO crearLogSOAPVO(orm.Tap_log logOrm) {
