@@ -19,10 +19,10 @@ import java.util.List;
 import orm.*;
 
 public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
-	public Tap_apuesta loadTap_apuestaByORMID(int ap_id) throws PersistentException {
+	public Tap_apuesta loadTap_apuestaByORMID(int apu_id) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
-			return loadTap_apuestaByORMID(session, ap_id);
+			return loadTap_apuestaByORMID(session, apu_id);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
 		}
 	}
 	
-	public Tap_apuesta getTap_apuestaByORMID(int ap_id) throws PersistentException {
+	public Tap_apuesta getTap_apuestaByORMID(int apu_id) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
-			return getTap_apuestaByORMID(session, ap_id);
+			return getTap_apuestaByORMID(session, apu_id);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
 		}
 	}
 	
-	public Tap_apuesta loadTap_apuestaByORMID(int ap_id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_apuesta loadTap_apuestaByORMID(int apu_id, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
-			return loadTap_apuestaByORMID(session, ap_id, lockMode);
+			return loadTap_apuestaByORMID(session, apu_id, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
 		}
 	}
 	
-	public Tap_apuesta getTap_apuestaByORMID(int ap_id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_apuesta getTap_apuestaByORMID(int apu_id, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
-			return getTap_apuestaByORMID(session, ap_id, lockMode);
+			return getTap_apuestaByORMID(session, apu_id, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
 		}
 	}
 	
-	public Tap_apuesta loadTap_apuestaByORMID(PersistentSession session, int ap_id) throws PersistentException {
+	public Tap_apuesta loadTap_apuestaByORMID(PersistentSession session, int apu_id) throws PersistentException {
 		try {
-			return (Tap_apuesta) session.load(orm.Tap_apuesta.class, new Integer(ap_id));
+			return (Tap_apuesta) session.load(orm.Tap_apuesta.class, new Integer(apu_id));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
 		}
 	}
 	
-	public Tap_apuesta getTap_apuestaByORMID(PersistentSession session, int ap_id) throws PersistentException {
+	public Tap_apuesta getTap_apuestaByORMID(PersistentSession session, int apu_id) throws PersistentException {
 		try {
-			return (Tap_apuesta) session.get(orm.Tap_apuesta.class, new Integer(ap_id));
+			return (Tap_apuesta) session.get(orm.Tap_apuesta.class, new Integer(apu_id));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
 		}
 	}
 	
-	public Tap_apuesta loadTap_apuestaByORMID(PersistentSession session, int ap_id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_apuesta loadTap_apuestaByORMID(PersistentSession session, int apu_id, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Tap_apuesta) session.load(orm.Tap_apuesta.class, new Integer(ap_id), lockMode);
+			return (Tap_apuesta) session.load(orm.Tap_apuesta.class, new Integer(apu_id), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
 		}
 	}
 	
-	public Tap_apuesta getTap_apuestaByORMID(PersistentSession session, int ap_id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_apuesta getTap_apuestaByORMID(PersistentSession session, int apu_id, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Tap_apuesta) session.get(orm.Tap_apuesta.class, new Integer(ap_id), lockMode);
+			return (Tap_apuesta) session.get(orm.Tap_apuesta.class, new Integer(apu_id), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -281,12 +281,12 @@ public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
 	
 	public boolean deleteAndDissociate(orm.Tap_apuesta tap_apuesta)throws PersistentException {
 		try {
-			if(tap_apuesta.getTap_cajacaj() != null) {
-				tap_apuesta.getTap_cajacaj().tap_apuesta.remove(tap_apuesta);
+			if(tap_apuesta.getTap_regcarrcabrcc() != null) {
+				tap_apuesta.getTap_regcarrcabrcc().tap_apuesta.remove(tap_apuesta);
 			}
 			
-			if(tap_apuesta.getTap_carreracar() != null) {
-				tap_apuesta.getTap_carreracar().tap_apuesta.remove(tap_apuesta);
+			if(tap_apuesta.getTap_cajacaj() != null) {
+				tap_apuesta.getTap_cajacaj().tap_apuesta.remove(tap_apuesta);
 			}
 			
 			return delete(tap_apuesta);
@@ -299,12 +299,12 @@ public class Tap_apuestaDAOImpl implements orm.dao.Tap_apuestaDAO {
 	
 	public boolean deleteAndDissociate(orm.Tap_apuesta tap_apuesta, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if(tap_apuesta.getTap_cajacaj() != null) {
-				tap_apuesta.getTap_cajacaj().tap_apuesta.remove(tap_apuesta);
+			if(tap_apuesta.getTap_regcarrcabrcc() != null) {
+				tap_apuesta.getTap_regcarrcabrcc().tap_apuesta.remove(tap_apuesta);
 			}
 			
-			if(tap_apuesta.getTap_carreracar() != null) {
-				tap_apuesta.getTap_carreracar().tap_apuesta.remove(tap_apuesta);
+			if(tap_apuesta.getTap_cajacaj() != null) {
+				tap_apuesta.getTap_cajacaj().tap_apuesta.remove(tap_apuesta);
 			}
 			
 			try {

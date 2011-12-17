@@ -285,13 +285,9 @@ public class Tap_carreraDAOImpl implements orm.dao.Tap_carreraDAO {
 				tap_carrera.getTap_pistapis().tap_carrera.remove(tap_carrera);
 			}
 			
-			if(tap_carrera.getTap_caballocab() != null) {
-				tap_carrera.getTap_caballocab().tap_carrera.remove(tap_carrera);
-			}
-			
-			orm.Tap_apuesta[] lTap_apuestas = tap_carrera.tap_apuesta.toArray();
-			for(int i = 0; i < lTap_apuestas.length; i++) {
-				lTap_apuestas[i].setTap_carreracar(null);
+			orm.Tap_regcaballo[] lTap_regcarrcabs = tap_carrera.tap_regcarrcab.toArray();
+			for(int i = 0; i < lTap_regcarrcabs.length; i++) {
+				lTap_regcarrcabs[i].setTap_carreracar(null);
 			}
 			return delete(tap_carrera);
 		}
@@ -307,13 +303,9 @@ public class Tap_carreraDAOImpl implements orm.dao.Tap_carreraDAO {
 				tap_carrera.getTap_pistapis().tap_carrera.remove(tap_carrera);
 			}
 			
-			if(tap_carrera.getTap_caballocab() != null) {
-				tap_carrera.getTap_caballocab().tap_carrera.remove(tap_carrera);
-			}
-			
-			orm.Tap_apuesta[] lTap_apuestas = tap_carrera.tap_apuesta.toArray();
-			for(int i = 0; i < lTap_apuestas.length; i++) {
-				lTap_apuestas[i].setTap_carreracar(null);
+			orm.Tap_regcaballo[] lTap_regcarrcabs = tap_carrera.tap_regcarrcab.toArray();
+			for(int i = 0; i < lTap_regcarrcabs.length; i++) {
+				lTap_regcarrcabs[i].setTap_carreracar(null);
 			}
 			try {
 				session.delete(tap_carrera);
