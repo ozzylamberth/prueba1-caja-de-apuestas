@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="http://ws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws" xmlns:intf="http://ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<wsdl:definitions targetNamespace="http://ws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws" xmlns:intf="http://ws" xmlns:tns1="http://orm.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <!--WSDL created by Apache Axis version: 1.4
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://orm.org"/>
    <element name="add">
     <complexType>
      <sequence>
@@ -21,6 +22,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="fault" type="tns1:PersistentException"/>
    <element name="getAll">
     <complexType/>
    </element>
@@ -76,6 +78,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://orm.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="PersistentException">
+    <sequence/>
+   </complexType>
   </schema>
  </wsdl:types>
 
@@ -159,6 +166,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="PersistentException">
+
+      <wsdl:part element="impl:fault" name="fault">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:portType name="ApuestaSOA">
 
       <wsdl:operation name="add">
@@ -170,6 +185,10 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          <wsdl:output message="impl:addResponse" name="addResponse">
 
        </wsdl:output>
+
+         <wsdl:fault message="impl:PersistentException" name="PersistentException">
+
+       </wsdl:fault>
 
       </wsdl:operation>
 
@@ -219,6 +238,10 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
        </wsdl:output>
 
+         <wsdl:fault message="impl:PersistentException" name="PersistentException">
+
+       </wsdl:fault>
+
       </wsdl:operation>
 
    </wsdl:portType>
@@ -242,6 +265,12 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
             <wsdlsoap:body use="literal"/>
 
          </wsdl:output>
+
+         <wsdl:fault name="PersistentException">
+
+            <wsdlsoap:fault name="PersistentException" use="literal"/>
+
+         </wsdl:fault>
 
       </wsdl:operation>
 
@@ -314,6 +343,12 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
             <wsdlsoap:body use="literal"/>
 
          </wsdl:output>
+
+         <wsdl:fault name="PersistentException">
+
+            <wsdlsoap:fault name="PersistentException" use="literal"/>
+
+         </wsdl:fault>
 
       </wsdl:operation>
 

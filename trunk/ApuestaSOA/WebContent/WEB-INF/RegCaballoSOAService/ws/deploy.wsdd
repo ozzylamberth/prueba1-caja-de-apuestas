@@ -12,14 +12,14 @@
       <parameter name="typeMappingVersion" value="1.2"/>
       <operation xmlns:operNS="http://ws" xmlns:retNS="http://ws" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAll" qname="operNS:getAll" returnQName="retNS:getAllReturn" returnType="rtns:string" soapAction="">
       </operation>
-      <operation xmlns:operNS="http://ws" xmlns:retNS="http://ws" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getByCaballo" qname="operNS:getByCaballo" returnQName="retNS:getByCaballoReturn" returnType="rtns:string" soapAction="">
-        <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idCaballo" type="tns:int"/>
-      </operation>
       <operation xmlns:operNS="http://ws" xmlns:retNS="http://ws" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getById" qname="operNS:getById" returnQName="retNS:getByIdReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
       </operation>
       <operation xmlns:operNS="http://ws" xmlns:retNS="http://ws" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getByCarrera" qname="operNS:getByCarrera" returnQName="retNS:getByCarreraReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idCarrera" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://ws" xmlns:retNS="http://ws" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getByCaballo" qname="operNS:getByCaballo" returnQName="retNS:getByCaballoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idCaballo" type="tns:int"/>
       </operation>
       <parameter name="allowedMethods" value="getByCarrera getByCaballo getById getAll"/>
 

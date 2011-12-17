@@ -5,7 +5,7 @@
   <service name="ApuestaSOA" provider="java:RPC" style="wrapped" use="literal">
       <parameter name="wsdlTargetNamespace" value="http://ws"/>
       <parameter name="wsdlServiceElement" value="ApuestaSOAService"/>
-      <parameter name="schemaQualified" value="http://ws"/>
+      <parameter name="schemaQualified" value="http://ws,http://orm.org"/>
       <parameter name="wsdlServicePort" value="ApuestaSOA"/>
       <parameter name="className" value="ws.ApuestaSOA"/>
       <parameter name="wsdlPortType" value="ApuestaSOA"/>
@@ -15,6 +15,7 @@
         <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idCaballo" type="tns:int"/>
         <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idCarrera" type="tns:int"/>
         <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idCaja" type="tns:int"/>
+        <fault xmlns:fns="http://ws" xmlns:tns="http://orm.org" name="PersistentException" qname="fns:fault" class="org.orm.PersistentException" type="tns:PersistentException"/>
       </operation>
       <operation xmlns:operNS="http://ws" xmlns:retNS="http://ws" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAll" qname="operNS:getAll" returnQName="retNS:getAllReturn" returnType="rtns:string" soapAction="">
       </operation>
@@ -29,8 +30,10 @@
         <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idCarrera" type="tns:int"/>
         <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idCaballo" type="tns:int"/>
         <parameter xmlns:pns="http://ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:monto" type="tns:int"/>
+        <fault xmlns:fns="http://ws" xmlns:tns="http://orm.org" name="PersistentException" qname="fns:fault" class="org.orm.PersistentException" type="tns:PersistentException"/>
       </operation>
       <parameter name="allowedMethods" value="montoAPagar getAll montoByCaballo montoByCarrera add"/>
 
+      <typeMapping xmlns:ns="http://orm.org" qname="ns:PersistentException" type="java:org.orm.PersistentException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
   </service>
 </deployment>
