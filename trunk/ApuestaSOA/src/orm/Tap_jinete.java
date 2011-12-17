@@ -14,6 +14,9 @@
 package orm;
 
 import java.io.Serializable;
+/**
+ * Tabla que almacena los registros de los jinetes.
+ */
 public class Tap_jinete implements Serializable {
 	public Tap_jinete() {
 	}

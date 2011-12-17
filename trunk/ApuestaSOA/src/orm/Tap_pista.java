@@ -14,6 +14,9 @@
 package orm;
 
 import java.io.Serializable;
+/**
+ * Tabla que almacena los registros de las pistas.
+ */
 public class Tap_pista implements Serializable {
 	public Tap_pista() {
 	}

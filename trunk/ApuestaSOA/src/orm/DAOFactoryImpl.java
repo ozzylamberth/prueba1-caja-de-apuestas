@@ -52,5 +52,10 @@ public class DAOFactoryImpl extends DAOFactory {
 		return _tap_apuestaDAO;
 	}
 	
+	private Tap_logDAO _tap_logDAO = new Tap_logDAOImpl();
+	public Tap_logDAO getTap_logDAO() {
+		return _tap_logDAO;
+	}
+	
 }
 
