@@ -165,4 +165,49 @@
       <parameter name="idCarrera" type="integer"/>
     </function>
   </service>
+  <service name="LogSOA">
+    <annotation name="ActionScriptGeneration">
+      <item name="WSDL-service">LogSOAService</item>
+      <item name="ServiceType">WebService</item>
+      <item name="WSDL">http://localhost:8080/ApuestaSOA/services/LogSOA?wsdl</item>
+      <item name="Package">services.logsoa</item>
+      <item name="WSDL-port">LogSOA</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">WebService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
+      <item name="WSDL-endpoint">http://localhost:8080/ApuestaSOA/services/LogSOA</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="add" return-type="string">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="WSDLName">
+        <item name="SOAPAction"></item>
+        <item name="add">http://ws,add</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">string,date,date</item>
+        <item name="returnType">string</item>
+      </annotation>
+      <parameter name="evento" type="string"/>
+      <parameter name="fechaInicio" type="date"/>
+      <parameter name="fechaTermino" type="date"/>
+    </function>
+    <function name="getAll" return-type="string">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="WSDLName">
+        <item name="SOAPAction"></item>
+        <item name="getAll">http://ws,getAll</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">string</item>
+      </annotation>
+    </function>
+  </service>
 </model>
