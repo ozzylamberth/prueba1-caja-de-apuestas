@@ -285,9 +285,9 @@ public class Tap_caballoDAOImpl implements orm.dao.Tap_caballoDAO {
 				tap_caballo.getTap_jinetejin().setTap_caballo(null);
 			}
 			
-			orm.Tap_carrera[] lTap_carreras = tap_caballo.tap_carrera.toArray();
-			for(int i = 0; i < lTap_carreras.length; i++) {
-				lTap_carreras[i].setTap_caballocab(null);
+			orm.Tap_regcaballo[] lTap_regcarrcabs = tap_caballo.tap_regcarrcab.toArray();
+			for(int i = 0; i < lTap_regcarrcabs.length; i++) {
+				lTap_regcarrcabs[i].setTap_caballocab(null);
 			}
 			return delete(tap_caballo);
 		}
@@ -303,9 +303,9 @@ public class Tap_caballoDAOImpl implements orm.dao.Tap_caballoDAO {
 				tap_caballo.getTap_jinetejin().setTap_caballo(null);
 			}
 			
-			orm.Tap_carrera[] lTap_carreras = tap_caballo.tap_carrera.toArray();
-			for(int i = 0; i < lTap_carreras.length; i++) {
-				lTap_carreras[i].setTap_caballocab(null);
+			orm.Tap_regcaballo[] lTap_regcarrcabs = tap_caballo.tap_regcarrcab.toArray();
+			for(int i = 0; i < lTap_regcarrcabs.length; i++) {
+				lTap_regcarrcabs[i].setTap_caballocab(null);
 			}
 			try {
 				session.delete(tap_caballo);

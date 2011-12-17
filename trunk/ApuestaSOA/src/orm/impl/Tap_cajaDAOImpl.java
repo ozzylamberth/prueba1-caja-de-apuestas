@@ -19,7 +19,7 @@ import java.util.List;
 import orm.*;
 
 public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
-	public Tap_j loadTap_cajaByORMID(int caj_id) throws PersistentException {
+	public Tap_caja loadTap_cajaByORMID(int caj_id) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
 			return loadTap_cajaByORMID(session, caj_id);
@@ -30,7 +30,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j getTap_cajaByORMID(int caj_id) throws PersistentException {
+	public Tap_caja getTap_cajaByORMID(int caj_id) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
 			return getTap_cajaByORMID(session, caj_id);
@@ -41,7 +41,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j loadTap_cajaByORMID(int caj_id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_caja loadTap_cajaByORMID(int caj_id, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
 			return loadTap_cajaByORMID(session, caj_id, lockMode);
@@ -52,7 +52,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j getTap_cajaByORMID(int caj_id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_caja getTap_cajaByORMID(int caj_id, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
 			return getTap_cajaByORMID(session, caj_id, lockMode);
@@ -63,9 +63,9 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j loadTap_cajaByORMID(PersistentSession session, int caj_id) throws PersistentException {
+	public Tap_caja loadTap_cajaByORMID(PersistentSession session, int caj_id) throws PersistentException {
 		try {
-			return (Tap_j) session.load(orm.Tap_j.class, new Integer(caj_id));
+			return (Tap_caja) session.load(orm.Tap_caja.class, new Integer(caj_id));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j getTap_cajaByORMID(PersistentSession session, int caj_id) throws PersistentException {
+	public Tap_caja getTap_cajaByORMID(PersistentSession session, int caj_id) throws PersistentException {
 		try {
-			return (Tap_j) session.get(orm.Tap_j.class, new Integer(caj_id));
+			return (Tap_caja) session.get(orm.Tap_caja.class, new Integer(caj_id));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j loadTap_cajaByORMID(PersistentSession session, int caj_id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_caja loadTap_cajaByORMID(PersistentSession session, int caj_id, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Tap_j) session.load(orm.Tap_j.class, new Integer(caj_id), lockMode);
+			return (Tap_caja) session.load(orm.Tap_caja.class, new Integer(caj_id), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j getTap_cajaByORMID(PersistentSession session, int caj_id, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_caja getTap_cajaByORMID(PersistentSession session, int caj_id, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Tap_j) session.get(orm.Tap_j.class, new Integer(caj_id), lockMode);
+			return (Tap_caja) session.get(orm.Tap_caja.class, new Integer(caj_id), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -103,7 +103,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j[] listTap_cajaByQuery(String condition, String orderBy) throws PersistentException {
+	public Tap_caja[] listTap_cajaByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
 			return listTap_cajaByQuery(session, condition, orderBy);
@@ -114,7 +114,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j[] listTap_cajaByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_caja[] listTap_cajaByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
 			return listTap_cajaByQuery(session, condition, orderBy, lockMode);
@@ -125,7 +125,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j[] listTap_cajaByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
+	public Tap_caja[] listTap_cajaByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From orm.Tap_caja as Tap_caja");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
@@ -134,7 +134,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		try {
 			Query query = session.createQuery(sb.toString());
 			List list = query.list();
-			return (Tap_j[]) list.toArray(new Tap_j[list.size()]);
+			return (Tap_caja[]) list.toArray(new Tap_caja[list.size()]);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -142,7 +142,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j[] listTap_cajaByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_caja[] listTap_cajaByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From orm.Tap_caja as Tap_caja");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
@@ -152,7 +152,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 			Query query = session.createQuery(sb.toString());
 			query.setLockMode("this", lockMode);
 			List list = query.list();
-			return (Tap_j[]) list.toArray(new Tap_j[list.size()]);
+			return (Tap_caja[]) list.toArray(new Tap_caja[list.size()]);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -160,7 +160,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j loadTap_cajaByQuery(String condition, String orderBy) throws PersistentException {
+	public Tap_caja loadTap_cajaByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
 			return loadTap_cajaByQuery(session, condition, orderBy);
@@ -171,7 +171,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j loadTap_cajaByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
+	public Tap_caja loadTap_cajaByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = orm.ApuestaPersistentManager.instance().getSession();
 			return loadTap_cajaByQuery(session, condition, orderBy, lockMode);
@@ -182,16 +182,16 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j loadTap_cajaByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		Tap_j[] tap_cajas = listTap_cajaByQuery(session, condition, orderBy);
+	public Tap_caja loadTap_cajaByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
+		Tap_caja[] tap_cajas = listTap_cajaByQuery(session, condition, orderBy);
 		if (tap_cajas != null && tap_cajas.length > 0)
 			return tap_cajas[0];
 		else
 			return null;
 	}
 	
-	public Tap_j loadTap_cajaByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		Tap_j[] tap_cajas = listTap_cajaByQuery(session, condition, orderBy, lockMode);
+	public Tap_caja loadTap_cajaByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
+		Tap_caja[] tap_cajas = listTap_cajaByQuery(session, condition, orderBy, lockMode);
 		if (tap_cajas != null && tap_cajas.length > 0)
 			return tap_cajas[0];
 		else
@@ -253,11 +253,11 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j createTap_caja() {
-		return new orm.Tap_j();
+	public Tap_caja createTap_caja() {
+		return new orm.Tap_caja();
 	}
 	
-	public boolean save(orm.Tap_j tap_caja) throws PersistentException {
+	public boolean save(orm.Tap_caja tap_caja) throws PersistentException {
 		try {
 			orm.ApuestaPersistentManager.instance().saveObject(tap_caja);
 			return true;
@@ -268,7 +268,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public boolean delete(orm.Tap_j tap_caja) throws PersistentException {
+	public boolean delete(orm.Tap_caja tap_caja) throws PersistentException {
 		try {
 			orm.ApuestaPersistentManager.instance().deleteObject(tap_caja);
 			return true;
@@ -279,7 +279,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public boolean deleteAndDissociate(orm.Tap_j tap_caja)throws PersistentException {
+	public boolean deleteAndDissociate(orm.Tap_caja tap_caja)throws PersistentException {
 		try {
 			orm.Tap_apuesta[] lTap_apuestas = tap_caja.tap_apuesta.toArray();
 			for(int i = 0; i < lTap_apuestas.length; i++) {
@@ -293,7 +293,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public boolean deleteAndDissociate(orm.Tap_j tap_caja, org.orm.PersistentSession session)throws PersistentException {
+	public boolean deleteAndDissociate(orm.Tap_caja tap_caja, org.orm.PersistentSession session)throws PersistentException {
 		try {
 			orm.Tap_apuesta[] lTap_apuestas = tap_caja.tap_apuesta.toArray();
 			for(int i = 0; i < lTap_apuestas.length; i++) {
@@ -312,7 +312,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public boolean refresh(orm.Tap_j tap_caja) throws PersistentException {
+	public boolean refresh(orm.Tap_caja tap_caja) throws PersistentException {
 		try {
 			orm.ApuestaPersistentManager.instance().getSession().refresh(tap_caja);
 			return true;
@@ -323,7 +323,7 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public boolean evict(orm.Tap_j tap_caja) throws PersistentException {
+	public boolean evict(orm.Tap_caja tap_caja) throws PersistentException {
 		try {
 			orm.ApuestaPersistentManager.instance().getSession().evict(tap_caja);
 			return true;
@@ -334,15 +334,15 @@ public class Tap_cajaDAOImpl implements orm.dao.Tap_cajaDAO {
 		}
 	}
 	
-	public Tap_j loadTap_cajaByCriteria(Tap_cajaCriteria tap_cajaCriteria) {
-		Tap_j[] tap_cajas = listTap_cajaByCriteria(tap_cajaCriteria);
+	public Tap_caja loadTap_cajaByCriteria(Tap_cajaCriteria tap_cajaCriteria) {
+		Tap_caja[] tap_cajas = listTap_cajaByCriteria(tap_cajaCriteria);
 		if(tap_cajas == null || tap_cajas.length == 0) {
 			return null;
 		}
 		return tap_cajas[0];
 	}
 	
-	public Tap_j[] listTap_cajaByCriteria(Tap_cajaCriteria tap_cajaCriteria) {
+	public Tap_caja[] listTap_cajaByCriteria(Tap_cajaCriteria tap_cajaCriteria) {
 		return tap_cajaCriteria.listTap_caja();
 	}
 }
