@@ -28,6 +28,8 @@ License Type: Purchased
 		<mapping resource="ormmapping/orm/Tap_caja.hbm.xml" />
 		<mapping resource="ormmapping/orm/Tap_carrera.hbm.xml" />
 		<mapping resource="ormmapping/orm/Tap_jinete.hbm.xml" />
+		<mapping resource="ormmapping/orm/Tap_log.hbm.xml" />
 		<mapping resource="ormmapping/orm/Tap_pista.hbm.xml" />
+		<mapping resource="ormmapping/orm/Tap_regcaballo.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
