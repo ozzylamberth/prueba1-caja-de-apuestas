@@ -14,20 +14,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="getByCaballo">
-    <complexType>
-     <sequence>
-      <element name="idCaballo" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getByCaballoResponse">
-    <complexType>
-     <sequence>
-      <element name="getByCaballoReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="getById">
     <complexType>
      <sequence>
@@ -53,6 +39,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="getByCarreraReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getByCaballo">
+    <complexType>
+     <sequence>
+      <element name="idCaballo" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getByCaballoResponse">
+    <complexType>
+     <sequence>
+      <element name="getByCaballoReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -107,17 +107,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getByCarreraRequest">
+   <wsdl:message name="getByCaballoRequest">
 
-      <wsdl:part element="impl:getByCarrera" name="parameters">
+      <wsdl:part element="impl:getByCaballo" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="getByCaballoRequest">
+   <wsdl:message name="getByCarreraRequest">
 
-      <wsdl:part element="impl:getByCaballo" name="parameters">
+      <wsdl:part element="impl:getByCarrera" name="parameters">
 
       </wsdl:part>
 
@@ -132,18 +132,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:getAllResponse" name="getAllResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getByCaballo">
-
-         <wsdl:input message="impl:getByCaballoRequest" name="getByCaballoRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getByCaballoResponse" name="getByCaballoResponse">
 
        </wsdl:output>
 
@@ -173,6 +161,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="getByCaballo">
+
+         <wsdl:input message="impl:getByCaballoRequest" name="getByCaballoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getByCaballoResponse" name="getByCaballoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="RegCaballoSOASoapBinding" type="impl:RegCaballoSOA">
@@ -190,24 +190,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getAllResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getByCaballo">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getByCaballoRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getByCaballoResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -244,6 +226,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getByCarreraResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getByCaballo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getByCaballoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getByCaballoResponse">
 
             <wsdlsoap:body use="literal"/>
 
