@@ -38,6 +38,10 @@ public class CreateApuestaData {
 			orm.Tap_apuesta oRMTap_apuesta = oRMTap_apuestaDAO.createTap_apuesta();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : tap_cajacaj, tap_regcarrcabrcc, apu_fecha, apu_monto
 			oRMTap_apuestaDAO.save(oRMTap_apuesta);
+			orm.dao.Tap_logDAO oRMTap_logDAO = lDAOFactory.getTap_logDAO();
+			orm.Tap_log oRMTap_log = oRMTap_logDAO.createTap_log();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : log_tiempo, log_fechatermino, log_fechainicio, log_evento
+			oRMTap_logDAO.save(oRMTap_log);
 			t.commit();
 		}
 		catch (Exception e) {

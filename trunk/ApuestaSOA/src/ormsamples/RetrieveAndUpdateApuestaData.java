@@ -38,6 +38,10 @@ public class RetrieveAndUpdateApuestaData {
 			orm.Tap_apuesta oRMTap_apuesta = oRMTap_apuestaDAO.loadTap_apuestaByQuery(null, null);
 			// Update the properties of the persistent object
 			oRMTap_apuestaDAO.save(oRMTap_apuesta);
+			orm.dao.Tap_logDAO oRMTap_logDAO = lDAOFactory.getTap_logDAO();
+			orm.Tap_log oRMTap_log = oRMTap_logDAO.loadTap_logByQuery(null, null);
+			// Update the properties of the persistent object
+			oRMTap_logDAO.save(oRMTap_log);
 			t.commit();
 		}
 		catch (Exception e) {
@@ -88,6 +92,12 @@ public class RetrieveAndUpdateApuestaData {
 		// Please uncomment the follow line and fill in parameter(s)
 		//tap_apuestaCriteria.apu_id.eq();
 		System.out.println(tap_apuestaCriteria.uniqueTap_apuesta());
+		
+		System.out.println("Retrieving Tap_log by Tap_logCriteria");
+		orm.Tap_logCriteria tap_logCriteria = new orm.Tap_logCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//tap_logCriteria.log_id.eq();
+		System.out.println(tap_logCriteria.uniqueTap_log());
 		
 	}
 	

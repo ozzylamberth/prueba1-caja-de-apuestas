@@ -66,6 +66,14 @@ public void listTestData() throws PersistentException {
 		}
 		System.out.println(length + " record(s) retrieved.");
 		
+		System.out.println("Listing Tap_log...");
+		orm.Tap_log[] oRMTap_logs = lDAOFactory.getTap_logDAO().listTap_logByQuery(null, null);
+		length = Math.min(oRMTap_logs.length, ROW_COUNT);
+		for (int i = 0; i < length; i++) {
+			System.out.println(oRMTap_logs[i]);
+		}
+		System.out.println(length + " record(s) retrieved.");
+		
 	}
 	
 	public void listByCriteria() throws PersistentException  {
@@ -152,6 +160,18 @@ public void listTestData() throws PersistentException {
 			 System.out.println(oRMTap_apuestas[i]);
 		}
 		System.out.println(length + " Tap_apuesta record(s) retrieved."); 
+		
+		System.out.println("Listing Tap_log by Criteria...");
+		orm.Tap_logCriteria tap_logCriteria = new orm.Tap_logCriteria();
+		// Please uncomment the follow line and fill in parameter(s) 
+		//tap_logCriteria.log_id.eq();
+		tap_logCriteria.setMaxResults(ROW_COUNT);
+		orm.Tap_log[] oRMTap_logs = tap_logCriteria.listTap_log();
+		length =oRMTap_logs== null ? 0 : Math.min(oRMTap_logs.length, ROW_COUNT); 
+		for (int i = 0; i < length; i++) {
+			 System.out.println(oRMTap_logs[i]);
+		}
+		System.out.println(length + " Tap_log record(s) retrieved."); 
 		
 	}
 	
