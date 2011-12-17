@@ -17,14 +17,14 @@ import org.orm.*;
 import orm.*;
 
 public interface Tap_apuestaDAO {
-	public Tap_apuesta loadTap_apuestaByORMID(int ap_id) throws PersistentException;
-	public Tap_apuesta getTap_apuestaByORMID(int ap_id) throws PersistentException;
-	public Tap_apuesta loadTap_apuestaByORMID(int ap_id, org.hibernate.LockMode lockMode) throws PersistentException;
-	public Tap_apuesta getTap_apuestaByORMID(int ap_id, org.hibernate.LockMode lockMode) throws PersistentException;
-	public Tap_apuesta loadTap_apuestaByORMID(PersistentSession session, int ap_id) throws PersistentException;
-	public Tap_apuesta getTap_apuestaByORMID(PersistentSession session, int ap_id) throws PersistentException;
-	public Tap_apuesta loadTap_apuestaByORMID(PersistentSession session, int ap_id, org.hibernate.LockMode lockMode) throws PersistentException;
-	public Tap_apuesta getTap_apuestaByORMID(PersistentSession session, int ap_id, org.hibernate.LockMode lockMode) throws PersistentException;
+	public Tap_apuesta loadTap_apuestaByORMID(int apu_id) throws PersistentException;
+	public Tap_apuesta getTap_apuestaByORMID(int apu_id) throws PersistentException;
+	public Tap_apuesta loadTap_apuestaByORMID(int apu_id, org.hibernate.LockMode lockMode) throws PersistentException;
+	public Tap_apuesta getTap_apuestaByORMID(int apu_id, org.hibernate.LockMode lockMode) throws PersistentException;
+	public Tap_apuesta loadTap_apuestaByORMID(PersistentSession session, int apu_id) throws PersistentException;
+	public Tap_apuesta getTap_apuestaByORMID(PersistentSession session, int apu_id) throws PersistentException;
+	public Tap_apuesta loadTap_apuestaByORMID(PersistentSession session, int apu_id, org.hibernate.LockMode lockMode) throws PersistentException;
+	public Tap_apuesta getTap_apuestaByORMID(PersistentSession session, int apu_id, org.hibernate.LockMode lockMode) throws PersistentException;
 	public Tap_apuesta[] listTap_apuestaByQuery(String condition, String orderBy) throws PersistentException;
 	public Tap_apuesta[] listTap_apuestaByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException;
 	public Tap_apuesta[] listTap_apuestaByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException;
